@@ -3,8 +3,10 @@
 /* ------------------------------------------------------------------
    Stay Inspired Knowledge Is Power — design tokens
    Palette is sampled directly from Miriam's brand seal: the black
-   disc, the deep rose of the flower, the forest green of its leaves,
-   and the warm ivory of the lettering. The bright lime comes from the
+   disc, the rose of the flower, the forest green of its leaves, and
+   the warm ivory of the lettering. The reds are pitched a few points
+   lighter than the seal's #7e201e so they hold up on screen, but they
+   keep its warm hue rather than drifting toward crimson. The bright lime comes from the
    music notes in the winged-guitar artwork.
    ------------------------------------------------------------------ */
 
@@ -14,8 +16,8 @@
   --color-slate: #292530;
   --color-bone: #efece5;
   --color-bone-2: #dfdad0;
-  --color-rose: #a82836;
-  --color-rose-lit: #d2384a;
+  --color-rose: #c12a2f;
+  --color-rose-lit: #e04a45;
   --color-leaf: #2e5233;
   --color-lime: #8fd14f;
   --color-ash: #a39da8;

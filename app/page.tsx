@@ -193,8 +193,8 @@ export default function Home() {
             <Reveal className="lg:col-span-5">
               <div className="relative aspect-3/4 overflow-hidden bg-slate">
                 <Image
-                  src="/photos/miriam-portrait.jpg"
-                  alt="Miriam D. Rivera wearing one of her winged-guitar designs"
+                  src="/photos/miriam-speaking.jpg"
+                  alt="Miriam D. Rivera, founder of Stay Inspired Knowledge Is Power"
                   fill
                   sizes="(min-width: 1024px) 38vw, 100vw"
                   className="object-cover"

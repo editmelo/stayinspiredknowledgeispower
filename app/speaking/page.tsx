@@ -6,7 +6,7 @@ import { PageHero, SectionHead } from "@/components/ui";
 import { org, speaking } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Miriam D.R. Speaks — book a speaking engagement",
+  title: "Miriam d r. Speaks — book a speaking engagement",
   description:
     "Miriam D. Rivera speaks to schools, youth programs and community organizations about mental illness, substance use and breaking the stigma — from lived experience.",
 };
@@ -18,7 +18,7 @@ export default function SpeakingPage() {
         eyebrow="Speaking engagements"
         title={
           <>
-            Miriam D.R.
+            Miriam d r.
             <br />
             Speaks.
           </>

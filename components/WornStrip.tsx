@@ -8,6 +8,7 @@ import Image from "next/image";
 const shots = [
   { src: "/photos/family-aprons.jpg", alt: "Three family members wearing Master Chef aprons" },
   { src: "/photos/two-wearers.jpg", alt: "Two people in winged-guitar tees" },
+  { src: "/photos/miriam-portrait.jpg", alt: "A supporter wearing the winged-guitar tee" },
   { src: "/photos/elder-wearer.jpg", alt: "An older woman at home in a winged-guitar tee" },
   { src: "/photos/vendor-booth.jpg", alt: "The Rock Out for Mental Health vendor booth at a community event" },
   { src: "/photos/red-apron-grill.jpg", alt: "A supporter in a red apron at the grill" },

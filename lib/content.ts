@@ -52,7 +52,7 @@ export const buckets = [
   },
   {
     n: "Speaking",
-    title: "Miriam D.R. Speaks",
+    title: "Miriam d r. Speaks",
     href: "/speaking",
     blurb: "Lived experience, child welfare background, and graduate study, brought to schools and youth programs.",
   },
@@ -183,7 +183,7 @@ export const categories = [
 ];
 
 export const speaking = {
-  brand: "Miriam D.R. Speaks",
+  brand: "Miriam d r. Speaks",
   lede:
     "Miriam talks to students about mental illness and substance use the way almost no one does — as the family member, not the textbook.",
   status: "Now booking first engagements for the 2026–27 school year.",

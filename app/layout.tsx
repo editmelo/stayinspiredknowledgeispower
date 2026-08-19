@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bodoni_Moda, Instrument_Sans } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -43,6 +43,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
   },
+};
+
+/* Matches --color-ink, so mobile browser chrome sits flush with the page. */
+export const viewport: Viewport = {
+  themeColor: "#121013",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

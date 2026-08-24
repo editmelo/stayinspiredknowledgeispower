@@ -55,11 +55,11 @@ export default function SpeakingPage() {
             <Reveal className="lg:col-span-5">
               <div className="relative aspect-3/4 overflow-hidden bg-slate">
                 <Image
-                  src="/photos/miriam-event.jpg"
-                  alt="Miriam D. Rivera at a public event, wearing one of her designs"
+                  src="/photos/miriam-headshot.jpg"
+                  alt="Studio headshot of Miriam D. Rivera"
                   fill
                   sizes="(min-width: 1024px) 38vw, 100vw"
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                   priority
                 />
               </div>

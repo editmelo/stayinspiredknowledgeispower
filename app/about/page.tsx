@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Waveform from "@/components/Waveform";
+import PartnerBand from "@/components/PartnerBand";
 import { PageHero } from "@/components/ui";
 import { buckets, mission, org, scholarship } from "@/lib/content";
 
@@ -164,6 +165,8 @@ export default function AboutPage() {
           </ul>
         </div>
       </section>
+
+      <PartnerBand />
     </>
   );
 }

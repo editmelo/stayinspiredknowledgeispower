@@ -396,6 +396,22 @@ export const resourceGroups: ResourceGroup[] = [
   },
 ];
 
+/* Logo is used with permission and shown unaltered, on a light ground —
+   the wordmark is near-black and would disappear on the site's dark sections. */
+export const partners = {
+  eyebrow: "Proud supporting partner",
+  note: "Stay Inspired Knowledge Is Power is proud to count the Indianapolis Urban League among its supporting partners.",
+  list: [
+    {
+      name: "Indianapolis Urban League",
+      logo: "/partners/indianapolis-urban-league.png",
+      width: 250,
+      height: 88,
+      href: "https://indplsul.org/",
+    },
+  ],
+};
+
 export const nav = [
   { label: "Shop", href: "/shop" },
   { label: "Speaking", href: "/speaking" },

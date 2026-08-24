@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import PartnerBand from "@/components/PartnerBand";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
 import VideoEmbed from "@/components/VideoEmbed";
@@ -385,6 +386,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ---------------------------------------------------- partner --- */}
+      <PartnerBand />
 
       {/* ---------------------------------------------------- closing --- */}
       <section className="relative overflow-hidden border-t border-bone/10 bg-coal">

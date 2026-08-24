@@ -52,9 +52,9 @@ export const buckets = [
   },
   {
     n: "Speaking",
-    title: "Miriam d r. Speaks",
+    title: "Miriam dr. Speaks",
     href: "/speaking",
-    blurb: "Lived experience, child welfare background, and graduate study, brought to schools and youth programs.",
+    blurb: "Lived experience and a child welfare background, brought to schools and youth programs.",
   },
   {
     n: "Education",
@@ -183,7 +183,11 @@ export const categories = [
 ];
 
 export const speaking = {
-  brand: "Miriam d r. Speaks",
+  brand: "Miriam dr. Speaks",
+  tagline: "Mental health · Elevating positivity",
+  /* Miriam takes booking requests through this form rather than by email. */
+  bookingForm:
+    "https://docs.google.com/forms/d/e/1FAIpQLScBgxFBDrOHV3Htczq8dN1kD2Jyx5bAI9e624mGa8TJml2aiw/viewform?usp=header",
   lede:
     "Miriam talks to students about mental illness and substance use the way almost no one does — as the family member, not the textbook.",
   status: "Now booking first engagements for the 2026–27 school year.",
@@ -197,8 +201,8 @@ export const speaking = {
       body: "Years of work in Indiana child welfare shape how she talks to young people, and to the adults responsible for them.",
     },
     {
-      label: "Graduate study",
-      body: "As a current graduate student, she pairs the story with the research, so a talk holds up in front of staff as well as students.",
+      label: "She built something with it",
+      body: "The talk is not where it ends. Miriam turned the same story into a company, a clothing line and a scholarship that has already paid a student's way — students can see the difference between advice and evidence.",
     },
   ],
   audiences: [

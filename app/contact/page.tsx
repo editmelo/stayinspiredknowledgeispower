@@ -43,7 +43,16 @@ export default function ContactPage() {
               </a>
 
               <p className="eyebrow mt-10">Speaking availability</p>
-              <p className="mt-3 text-lime">{speaking.status}</p>
+              <p className="mt-3 text-sage">{speaking.status}</p>
+              <a
+                href={speaking.bookingForm}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-mini mt-4"
+              >
+                <span>Booking form</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
               <p className="muted mt-3 text-sm">
                 Miriam works with schools, youth programs, parent nights, staff development
                 days, and community and faith organizations across Indiana.

@@ -22,6 +22,14 @@
   --color-lime: #8fd14f;
   --color-ash: #a39da8;
 
+  /* Sampled from the Miriam dr. Speaks logo — the butterfly's upper wings,
+     its lower wings, and the warm side of the heart. Used only as accents on
+     dark ground, where the speaking brand appears; the rose and ink scheme
+     stays in charge everywhere else. */
+  --color-sage: #bcd47f;
+  --color-gold: #e8c165;
+  --color-coral: #e0a184;
+
   --font-display: var(--font-bodoni), Georgia, serif;
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
@@ -326,6 +334,23 @@
   font-size: clamp(2.6rem, 5vw, 4.25rem);
   line-height: 0.86;
   letter-spacing: -0.03em;
+}
+
+/* Faint wash of the speaking logo's palette. Sits behind the butterfly mark
+   so it has somewhere to land without lightening the section. */
+.speaks-wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 22% 18%, color-mix(in oklab, var(--color-sage) 16%, transparent), transparent 70%),
+    radial-gradient(55% 50% at 82% 30%, color-mix(in oklab, var(--color-gold) 14%, transparent), transparent 70%),
+    radial-gradient(65% 60% at 60% 92%, color-mix(in oklab, var(--color-coral) 13%, transparent), transparent 72%);
+}
+
+/* Keeps "Miriam dr." from breaking across lines. */
+.nowrap {
+  white-space: nowrap;
 }
 
 /* ---------------------------------- motion ------------------------- */

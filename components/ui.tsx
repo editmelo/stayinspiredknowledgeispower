@@ -47,16 +47,24 @@ export function PageHero({
   lede,
   wave = "calm",
   children,
+  mark,
 }: {
   eyebrow: string;
   title: ReactNode;
   lede?: ReactNode;
   wave?: "loud" | "calm" | "silence" | "hair";
   children?: ReactNode;
+  /** Optional brand mark, floated clear of the text on wide screens. */
+  mark?: ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-bone/10">
       <div className="grain" />
+      {mark && (
+        <div className="pointer-events-none absolute top-1/2 right-10 hidden -translate-y-1/2 lg:block">
+          {mark}
+        </div>
+      )}
       <div className="shell relative pt-16 pb-14 md:pt-24 md:pb-20">
         <div className="stagger max-w-4xl">
           <p className="eyebrow" style={{ animationDelay: "60ms" }}>

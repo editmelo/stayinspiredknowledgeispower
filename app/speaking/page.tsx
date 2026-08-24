@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { PageHero, SectionHead } from "@/components/ui";
 import { org, speaking } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Miriam d r. Speaks — book a speaking engagement",
+  title: "Miriam dr. Speaks — book a speaking engagement",
   description:
     "Miriam D. Rivera speaks to schools, youth programs and community organizations about mental illness, substance use and breaking the stigma — from lived experience.",
 };
@@ -18,19 +17,34 @@ export default function SpeakingPage() {
         eyebrow="Speaking engagements"
         title={
           <>
-            Miriam d r.
+            <span className="nowrap">Miriam dr.</span>
             <br />
             Speaks.
           </>
         }
         wave="loud"
         lede={speaking.lede}
+        mark={
+          <Image
+            src="/brand/speaks-logo.png"
+            alt=""
+            width={889}
+            height={900}
+            className="w-52 xl:w-64"
+            priority
+          />
+        }
       >
         <div className="flex flex-wrap items-center gap-x-5 gap-y-4">
-          <Link href="/contact" className="btn btn-rose">
+          <a
+            href={speaking.bookingForm}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-rose"
+          >
             Request a date
-          </Link>
-          <p className="eyebrow !text-lime">{speaking.status}</p>
+          </a>
+          <p className="eyebrow !text-sage">{speaking.status}</p>
         </div>
       </PageHero>
 
@@ -58,9 +72,11 @@ export default function SpeakingPage() {
                 lede="Students can tell the difference between someone delivering a curriculum and someone describing their own house. Miriam is the second one — with the professional grounding to back it up."
               />
               <div className="mt-10 space-y-px bg-bone/12">
-                {speaking.credibility.map((c) => (
+                {speaking.credibility.map((c, i) => (
                   <Reveal as="div" key={c.label} className="bg-coal p-7">
-                    <p className="display d3 text-rose-lit">{c.label}</p>
+                    <p className={`display d3 ${["text-sage", "text-gold", "text-coral"][i] ?? "text-rose-lit"}`}>
+                      {c.label}
+                    </p>
                     <p className="muted mt-3">{c.body}</p>
                   </Reveal>
                 ))}
@@ -113,7 +129,7 @@ export default function SpeakingPage() {
                 {[
                   {
                     t: "Send the details",
-                    d: "Your organization, the audience and rough age range, your preferred dates, and how long you have.",
+                    d: "Fill in the booking form with your organization, the audience and rough age range, your preferred dates, and how long you have.",
                   },
                   {
                     t: "Pick the talk",
@@ -137,9 +153,14 @@ export default function SpeakingPage() {
               </ol>
 
               <div className="mt-10 flex flex-wrap gap-3">
-                <Link href="/contact" className="btn btn-rose">
-                  Request a date
-                </Link>
+                <a
+                  href={speaking.bookingForm}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-rose"
+                >
+                  Open the booking form
+                </a>
                 <a href={`mailto:${org.email}`} className="btn btn-ghost">
                   Email directly
                 </a>

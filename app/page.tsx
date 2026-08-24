@@ -77,10 +77,37 @@ export default function Home() {
                 <div className="absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-transparent" />
               </div>
               <p className="eyebrow mt-4">
-                {org.founder} — founder, speaker, graduate student
+                {org.founder} — founder and speaker
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------- shop --- */}
+      <section className="on-bone">
+        <div className="shell band">
+          <SectionHead
+            eyebrow="Swag & merch"
+            title="Wearable art with something to say"
+            lede="Roses, wings and music notes on shirts, aprons, tumblers and bracelets. It is not generic merch: every piece is a sentence someone else can read across a room."
+            link={{ label: "All products", href: "/shop" }}
+          />
+
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {featured.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 60} className="h-full">
+                <ProductCard product={p} priority={i < 4} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <div className="pb-16 md:pb-24">
+          <div className="shell mb-8">
+            <p className="eyebrow">Worn across Indiana</p>
+          </div>
+          <WornStrip />
         </div>
       </section>
 
@@ -159,61 +186,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------- shop --- */}
-      <section className="on-bone">
-        <div className="shell band">
-          <SectionHead
-            eyebrow="Swag & merch"
-            title="Wearable art with something to say"
-            lede="Roses, wings and music notes on shirts, aprons, tumblers and bracelets. It is not generic merch: every piece is a sentence someone else can read across a room."
-            link={{ label: "All products", href: "/shop" }}
-          />
-
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {featured.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 60} className="h-full">
-                <ProductCard product={p} priority={i < 4} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        <div className="pb-16 md:pb-24">
-          <div className="shell mb-8">
-            <p className="eyebrow">Worn across Indiana</p>
-          </div>
-          <WornStrip />
-        </div>
-      </section>
-
       {/* ---------------------------------------------------- speaking -- */}
       <section className="relative overflow-hidden">
-        <div className="shell band">
+        {/* The only place the speaking logo's pastels appear at any size. */}
+        <div className="speaks-wash" />
+        <div className="shell band relative">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-5">
               <div className="relative aspect-3/4 overflow-hidden bg-slate">
                 <Image
-                  src="/photos/miriam-speaking.jpg"
-                  alt="Miriam D. Rivera, founder of Stay Inspired Knowledge Is Power"
+                  src="/photos/miriam-headshot.jpg"
+                  alt="Studio headshot of Miriam D. Rivera"
                   fill
                   sizes="(min-width: 1024px) 38vw, 100vw"
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
             </Reveal>
 
             <div className="lg:col-span-7">
-              <SectionHead
-                eyebrow="Speaking engagements"
-                title={speaking.brand}
-                lede={speaking.lede}
-              />
+              <Reveal>
+                <p className="eyebrow">Speaking engagements</p>
+                <div className="mt-5 flex flex-wrap items-center gap-x-7 gap-y-5">
+                  <Image
+                    src="/brand/speaks-logo.png"
+                    alt=""
+                    width={889}
+                    height={900}
+                    className="w-24 shrink-0 md:w-32"
+                  />
+                  <div>
+                    <h2 className="display d2">
+                      <span className="nowrap">Miriam dr.</span> Speaks
+                    </h2>
+                    <p className="eyebrow mt-2.5 !text-gold">{speaking.tagline}</p>
+                  </div>
+                </div>
+                <p className="lede mt-7 max-w-2xl">{speaking.lede}</p>
+              </Reveal>
 
               <dl className="mt-10">
                 {speaking.credibility.map((c, i) => (
                   <Reveal as="div" key={c.label} delay={i * 70}>
                     <div className="grid gap-1.5 border-t border-bone/12 py-6 md:grid-cols-3 md:gap-8">
-                      <dt className="display d4 text-rose-lit">{c.label}</dt>
+                      <dt className={`display d4 ${["text-sage", "text-gold", "text-coral"][i] ?? "text-rose-lit"}`}>
+                        {c.label}
+                      </dt>
                       <dd className="muted md:col-span-2">{c.body}</dd>
                     </div>
                   </Reveal>
@@ -222,10 +240,21 @@ export default function Home() {
               </dl>
 
               <Reveal className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
-                <Link href="/speaking" className="btn btn-rose">
-                  See topics &amp; book
+                <a
+                  href={speaking.bookingForm}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-rose"
+                >
+                  Request a date
+                </a>
+                <Link href="/speaking" className="tlink">
+                  <span>See topics</span>
+                  <span aria-hidden="true">&rarr;</span>
                 </Link>
-                <p className="eyebrow !text-lime">{speaking.status}</p>
+              </Reveal>
+              <Reveal className="mt-6">
+                <p className="eyebrow !text-sage">{speaking.status}</p>
               </Reveal>
             </div>
           </div>

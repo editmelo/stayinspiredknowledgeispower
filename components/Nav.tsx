@@ -88,7 +88,7 @@ export default function Nav() {
                 </Link>
               );
             })}
-            <Link href="/contact" className="btn btn-rose !py-2.5 !text-[0.7rem]">
+            <Link href="/speaking" className="btn btn-rose !py-2.5 !text-[0.7rem]">
               Book Miriam
             </Link>
           </nav>

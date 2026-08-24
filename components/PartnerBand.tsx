@@ -13,8 +13,8 @@ export default function PartnerBand() {
     <section className="on-bone">
       <div className="shell band-tight">
         <div className="rule text-ink" />
-        <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
-          <div className="flex flex-wrap items-center gap-8">
+        <div className="mt-10 flex flex-col items-center gap-8 text-center md:flex-row md:justify-center md:gap-12 md:text-left">
+          <div className="flex flex-wrap items-center justify-center gap-8">
             {partners.list.map((p) => (
               <a
                 key={p.name}
@@ -37,7 +37,7 @@ export default function PartnerBand() {
 
           <div className="md:border-l md:border-ink/15 md:pl-12">
             <p className="eyebrow">{partners.eyebrow}</p>
-            <p className="mt-3 max-w-lg text-[0.95rem] leading-relaxed text-ink/75">
+            <p className="mt-3 mx-auto max-w-lg text-[0.95rem] leading-relaxed text-ink/75 md:mx-0">
               {partners.note}
             </p>
           </div>

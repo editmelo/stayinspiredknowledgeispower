@@ -352,7 +352,7 @@ export default function Home() {
                 ))}
               </ul>
               <p className="muted mt-6 text-sm">
-                Named for Miriam&rsquo;s son, William. The requirement is deliberate:
+                Named for Miriam&rsquo;s father, William. The requirement is deliberate:
                 this is the one thing on a student&rsquo;s life that never shows up on a
                 transcript, and almost never on a scholarship form either.
               </p>

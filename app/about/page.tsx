@@ -89,10 +89,10 @@ export default function AboutPage() {
             </Reveal>
             <Reveal className="prose-body mt-10 text-left" delay={200}>
               <p>
-                Miriam lost her son to substance use. The {scholarship.name} carries his
-                name, and it exists for a specific student: the one whose parent lives with
-                a mental illness or a substance use disorder, and who is trying to get
-                through school anyway.
+                Miriam lost her father due to mental health and substance use. The{" "}
+                {scholarship.name} carries his name, and it exists for a specific student:
+                the one whose parent lives with a mental illness or a substance use
+                disorder, and who is trying to get through school anyway.
               </p>
               <p>
                 The award is ${scholarship.award}. One student has been funded so far. Every

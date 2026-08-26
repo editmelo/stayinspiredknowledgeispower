@@ -8,7 +8,7 @@ import { education, resourceGroups } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Learn — how addiction happens",
   description:
-    "Education on mental health and substance use, starting with How Addiction Happens — a video made by a mother who lost her son to substance use.",
+    "Education on mental health and substance use, starting with How Addiction Happens — how the mechanism works, for families trying to understand it.",
 };
 
 const language = [

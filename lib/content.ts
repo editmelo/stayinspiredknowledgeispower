@@ -194,7 +194,7 @@ export const speaking = {
   credibility: [
     {
       label: "Lived experience",
-      body: "Miriam speaks as a family member, about what mental illness and addiction actually look like inside a home. Students recognize it immediately.",
+      body: "Miriam speaks as a daughter, about what mental illness and addiction actually look like inside a home. Students recognize it immediately.",
     },
     {
       label: "Child welfare background",

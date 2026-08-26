@@ -60,7 +60,7 @@ export const buckets = [
     n: "Education",
     title: "Learn",
     href: "/learn",
-    blurb: "How addiction happens, explained for families trying to understand what they are looking at.",
+    blurb: "How addiction happens, explained by a mother who lost her son to substance use.",
   },
   {
     n: "Scholarship",
@@ -194,7 +194,7 @@ export const speaking = {
   credibility: [
     {
       label: "Lived experience",
-      body: "Miriam speaks as a daughter, about what mental illness and addiction actually look like inside a home — she was the student this scholarship is now for. Students recognize it immediately.",
+      body: "Miriam speaks as a family member, about what mental illness and addiction actually look like inside a home. Students recognize it immediately.",
     },
     {
       label: "Child welfare background",
@@ -237,7 +237,7 @@ export const education = {
   videoId: "HDfSx_Q7_Yk",
   videoTitle: "How Addiction Happens",
   lede:
-    "Start here. One video on how addiction actually works, for families trying to understand what they are looking at.",
+    "Start here. One video, made by a mother who lost her son to substance use, for families trying to understand what they are looking at.",
   points: [
     {
       label: "Addiction is not a character flaw",

@@ -2,12 +2,20 @@
 
 /* ------------------------------------------------------------------
    Stay Inspired Knowledge Is Power — design tokens
-   Palette is sampled directly from Miriam's brand seal: the black
-   disc, the rose of the flower, the forest green of its leaves, and
-   the warm ivory of the lettering. The reds are pitched a few points
-   lighter than the seal's #7e201e so they hold up on screen, but they
-   keep its warm hue rather than drifting toward crimson. The bright lime comes from the
-   music notes in the winged-guitar artwork.
+   Ink, bone and leaf are sampled from Miriam's brand seal: the black
+   disc, the forest green of the rose's leaves, and the warm ivory of
+   the lettering. The bright lime comes from the music notes in the
+   winged-guitar artwork.
+
+   --color-rose is the brand crimson, #b22222, and it is the red
+   everywhere it can be: buttons, the crisis bar, rules and marks. It
+   carries bone text at 5.66:1.
+
+   --color-rose-lit is the same hue (0°) lifted to 57% lightness. It
+   exists only because #b22222 as *text* on the near-black ground is
+   2.84:1, which is unreadable; this tint is 4.67:1 and clears AA. Use
+   it for small red text and hovers on dark, never as a second brand
+   colour.
    ------------------------------------------------------------------ */
 
 @theme {
@@ -16,8 +24,8 @@
   --color-slate: #292530;
   --color-bone: #efece5;
   --color-bone-2: #dfdad0;
-  --color-rose: #c12a2f;
-  --color-rose-lit: #e04a45;
+  --color-rose: #b22222;
+  --color-rose-lit: #dd4b4b;
   --color-leaf: #2e5233;
   --color-lime: #8fd14f;
   --color-ash: #a39da8;

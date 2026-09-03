@@ -63,6 +63,19 @@ export default function Nav() {
               <br />
               <span className="text-ash">Knowledge Is Power</span>
             </span>
+
+            {/* The faith the company is founded on, set as a quiet part of the
+                lockup. The seal already carries the Proverbs verse. */}
+            <span className="hidden h-7 w-px bg-bone/20 sm:block" aria-hidden="true" />
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-auto shrink-0 text-bone/70 md:h-6"
+              fill="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M10.75 1.5h2.5v6h6.25V10h-6.25v12.5h-2.5V10H4.5V7.5h6.25z" />
+            </svg>
           </Link>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">

@@ -73,14 +73,20 @@ All of these were pulled from the current Wix site, so they are the same photos 
 These are written as accurately as the brief allowed, but a few need her sign-off:
 
 1. **Checkout.** Product cards open the existing Wix store in a new tab (`org.legacyStore` in `content.ts`). Real on-site checkout would need a commerce integration — Stripe or Shopify via the Vercel Marketplace — which is a separate piece of work.
-2. **Instagram handle.** The site links to `@getfitwmiriam`, which is the only Instagram supplied. It reads as a personal fitness account rather than a Stay Inspired business account — worth confirming that is where she wants supporters sent. Facebook, Instagram and LinkedIn are the three accounts shown; there is no TikTok.
+2. **Instagram handle — likely wrong.** The site links `@getfitwmiriam`, the only handle supplied. Her own printed bookmarks name two different accounts: **`knowledge_is_powerllc`** for the company and **`miriamdr.speaksllc`** for the speaking brand. Not changed without a say-so, but the current link is probably not where supporters should be sent. Facebook, Instagram and LinkedIn are the three shown; there is no TikTok.
 3. **"Mental Health Alliance."** The meeting notes said Alliance; the resource list uses **Mental Health America** (`mhanational.org`), which is almost certainly what was meant. Worth a check.
 4. **Child welfare / DCS.** Described as "years of work in Indiana child welfare" rather than naming the agency or a title, since the brief only said "DCS background." She should set the exact wording.
-5. **Speaking availability.** The site says "Now booking first engagements for the 2026–27 school year," which reflects having no bookings yet without sounding new. Update as dates fill.
-6. **William.** William Rivera was Miriam's father; she lost him to mental health and substance use. She should read the passages on `/about` and `/scholarship` and approve the wording herself. No quotations are attributed to her anywhere on the site.
-7. **Resources layout.** The ask was for "a dropdown with multiple resource links," because Wix only allowed one. This is built as four labelled groups of four links each — sixteen total, all visible, no clicking to discover them. If she specifically wants a collapsed dropdown, that is a small change.
-8. **Scholarship application.** Currently a pre-filled email. If she wants a real form with file upload, that is a follow-up.
-9. **Contact form** composes an email in the visitor's mail app rather than posting to a server, so nothing can silently fail to arrive. If she would rather receive submissions directly, that needs a form service or an API route.
+5. **William's memorial section (`/about`) is placeholder copy.** The photographs are in place; the two paragraphs in `william.copy` (`content.ts`) are holding text that says so out loud. Miriam is writing this herself — replace before launch.
+
+   Two of the eight photographs show **children's faces** (`family-portrait.jpg`, `grandchildren-memorial-tees.jpg`) and one is the **graveside** (`graveside.jpg`). All three are fine to keep, but they are the kind of thing a family should choose to publish deliberately rather than by default. Ask.
+6. **Piano Keys Tee price.** Listed at **$30**, matched to the other full-front prints — the price was not supplied. Confirm before launch (`content.ts`, `products`).
+7. **Speaking topics may be off-message.** The four talks under "What she can speak about" were written from the original brief and lean on addiction. Her bookmark describes the programme as *"empowering youth ages 12–18 … evidence-informed tools to practice positivity, strengthen resilience."* The topics were left alone rather than rewritten, but they should probably be replaced with her actual session list.
+8. **Zelle.** Her Zelle QR is held in `private-assets/`, which is gitignored and outside `public/` — deliberately not on the site and not in this repo, per instruction. See `private-assets/README.md`. Note that this repo is public, so anything committed under `public/` is published permanently.
+9. **Speaking availability.** The site says "Now booking first engagements for the 2026–27 school year," which reflects having no bookings yet without sounding new. Update as dates fill.
+10. **William.** William Rivera was Miriam's father; she lost him to mental health and substance use. She should read the passages on `/about` and `/scholarship` and approve the wording herself. No quotations are attributed to her anywhere on the site.
+11. **Resources layout.** The ask was for "a dropdown with multiple resource links," because Wix only allowed one. This is built as four labelled groups of four links each — sixteen total, all visible, no clicking to discover them. If she specifically wants a collapsed dropdown, that is a small change.
+12. **Scholarship application.** Currently a pre-filled email. If she wants a real form with file upload, that is a follow-up.
+13. **Contact form** composes an email in the visitor's mail app rather than posting to a server, so nothing can silently fail to arrive. If she would rather receive submissions directly, that needs a form service or an API route.
 
 ---
 

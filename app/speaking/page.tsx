@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { PageHero, SectionHead } from "@/components/ui";
-import { org, speaking } from "@/lib/content";
+import { speaking } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Miriam dr. Speaks — book a speaking engagement",
@@ -23,7 +23,7 @@ export default function SpeakingPage() {
           </>
         }
         wave="loud"
-        lede={speaking.lede}
+        lede={speaking.mission}
         mark={
           <Image
             src="/brand/speaks-logo.png"
@@ -35,6 +35,7 @@ export default function SpeakingPage() {
           />
         }
       >
+        <p className="quote mb-7 max-w-xl text-gold">{speaking.tagline}</p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-4">
           <a
             href={speaking.bookingForm}
@@ -111,7 +112,8 @@ export default function SpeakingPage() {
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <p className="eyebrow">Audiences</p>
-              <h2 className="display d2 mt-4">Who she speaks to</h2>
+              <h2 className="display d2 mt-4">Where she speaks</h2>
+              <p className="lede mt-5 max-w-md">Youth ages 12&ndash;18.</p>
               <ul className="mt-8">
                 {speaking.audiences.map((a) => (
                   <li key={a} className="flex gap-4 border-b border-bone/12 py-4">
@@ -161,10 +163,31 @@ export default function SpeakingPage() {
                 >
                   Open the booking form
                 </a>
-                <a href={`mailto:${org.email}`} className="btn btn-ghost">
+                <a href={`mailto:${speaking.email}`} className="btn btn-ghost">
                   Email directly
                 </a>
               </div>
+
+              <dl className="mt-8 space-y-2 text-sm">
+                <div className="flex gap-3">
+                  <dt className="eyebrow w-16 shrink-0 pt-1">Email</dt>
+                  <dd>
+                    <a href={`mailto:${speaking.email}`} className="transition-colors hover:text-rose-lit">
+                      {speaking.email}
+                    </a>
+                  </dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="eyebrow w-16 shrink-0 pt-1">Phone</dt>
+                  <dd>
+                    <a href={`tel:${speaking.phoneHref}`} className="transition-colors hover:text-rose-lit">
+                      {speaking.phone}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+
+              <p className="quote mt-10 max-w-md text-sage">{speaking.closing}</p>
             </div>
           </div>
         </div>

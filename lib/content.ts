@@ -82,6 +82,8 @@ export type Product = {
   price: number;
   category: "Shirts" | "Aprons" | "Drinkware" | "Bracelets";
   image: string;
+  /** Second colourway, where a product has one. */
+  altImage?: string;
   note: string;
   featured?: boolean;
 };
@@ -133,6 +135,17 @@ export const products: Product[] = [
     featured: true,
   },
   {
+    slug: "piano-keys-tee",
+    name: "Piano Keys Tee",
+    /* TODO price unconfirmed — matched to the other full-front prints. */
+    price: 30,
+    category: "Shirts",
+    image: "/products/piano-keys-tee-black.jpg",
+    altImage: "/products/piano-keys-tee-white.jpg",
+    note: "A keyboard mid-run, notes coming off it. In black or white.",
+    featured: true,
+  },
+  {
     slug: "music-healing-tee",
     name: "Music Healing Tee",
     price: 25,
@@ -176,15 +189,50 @@ export const products: Product[] = [
 ];
 
 export const categories = [
-  { name: "Shirts", from: 25, count: 6, image: "/products/music-is-my-therapy.jpg" },
+  { name: "Shirts", from: 25, count: 7, image: "/products/music-is-my-therapy.jpg" },
   { name: "Aprons", from: 25, count: 1, image: "/products/mental-health-apron.jpg" },
   { name: "Drinkware", from: 25, count: 1, image: "/products/rock-out-tumbler.jpg" },
   { name: "Bracelets", from: 5, count: 1, image: "/products/mental-health-bracelet.jpg" },
 ];
 
+/**
+ * The memorial section on /about.
+ *
+ * `copy` is PLACEHOLDER TEXT. Miriam is writing this herself — replace both
+ * paragraphs before launch and delete this note. Nothing here invents
+ * anything about William beyond what the photographs show.
+ */
+export const william = {
+  name: "William Rivera",
+  eyebrow: "In memory",
+  heading: "Her father, and the reason there is a fund",
+  copy: [
+    "Miriam is writing this part herself — her father's story, in her words.",
+    "This is a placeholder so the section can be built and reviewed. It is not finished copy.",
+  ],
+  photos: [
+    { src: "/photos/william/william-chef-clipping.jpg", alt: "William Rivera in chef's whites, in a newspaper clipping" },
+    { src: "/photos/william/william-at-work.jpg", alt: "William Rivera at work, seated in uniform" },
+    { src: "/photos/william/william-kitchen.jpg", alt: "William Rivera in a kitchen with family" },
+    { src: "/photos/william/william-at-home.jpg", alt: "William Rivera at home" },
+    { src: "/photos/william/william-young.jpg", alt: "William Rivera as a young man" },
+    { src: "/photos/william/family-portrait.jpg", alt: "A Rivera family portrait" },
+    { src: "/photos/william/grandchildren-memorial-tees.jpg", alt: "William Rivera's grandchildren wearing memorial shirts" },
+    { src: "/photos/william/graveside.jpg", alt: "The Rivera family gathered at William's graveside" },
+  ],
+};
+
 export const speaking = {
   brand: "Miriam dr. Speaks",
-  tagline: "Mental health · Elevating positivity",
+  tagline: "Positivity in Practice. Mental Health in Focus.",
+  /* Her own words, from the bookmark she hands out at engagements. */
+  mission:
+    "Empowering youth ages 12–18 by teaching mental health awareness and equipping them with evidence-informed tools to practice positivity, strengthen resilience, and improve overall well-being.",
+  closing: "Let's work together to empower youth and create lasting impact.",
+  entity: "Miriam dr. Speaks, LLC",
+  email: "miriamdr.speaks@gmail.com",
+  phone: "317-912-5815",
+  phoneHref: "+13179125815",
   /* Miriam takes booking requests through this form rather than by email. */
   bookingForm:
     "https://docs.google.com/forms/d/e/1FAIpQLScBgxFBDrOHV3Htczq8dN1kD2Jyx5bAI9e624mGa8TJml2aiw/viewform?usp=header",
@@ -205,13 +253,12 @@ export const speaking = {
       body: "The talk is not where it ends. Miriam turned the same story into a company, a clothing line and a scholarship that has already paid a student's way — students can see the difference between advice and evidence.",
     },
   ],
+  /* The four she names on the bookmark, in her order. */
   audiences: [
-    "Middle and high school assemblies",
-    "Youth and after-school programs",
-    "Parent and family nights",
-    "Teacher and staff professional development",
-    "Community and faith organizations",
-    "Recovery and prevention coalitions",
+    "School visits",
+    "After school programs",
+    "Workshops",
+    "Summer camps",
   ],
   topics: [
     {

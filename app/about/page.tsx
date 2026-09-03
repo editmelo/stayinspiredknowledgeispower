@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import Waveform from "@/components/Waveform";
 import PartnerBand from "@/components/PartnerBand";
 import { PageHero } from "@/components/ui";
-import { buckets, mission, org, scholarship } from "@/lib/content";
+import { buckets, mission, org, scholarship, william } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About Miriam D. Rivera",
@@ -105,6 +105,59 @@ export default function AboutPage() {
                 About the fund
               </Link>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ------------------------------------------------- in memory ---- */}
+      {/* PLACEHOLDER COPY — william.copy in lib/content.ts is holding text.
+          Miriam is writing this section herself. Replace before launch. */}
+      <section className="relative overflow-hidden border-t border-bone/10">
+        <div className="shell band">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <Reveal className="lg:col-span-5">
+              <div className="relative aspect-3/4 overflow-hidden bg-slate">
+                <Image
+                  src={william.photos[0].src}
+                  alt={william.photos[0].alt}
+                  fill
+                  sizes="(min-width: 1024px) 38vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+
+            <div className="lg:col-span-7">
+              <Reveal>
+                <p className="eyebrow">{william.eyebrow}</p>
+                <h2 className="display d2 mt-4">{william.name}</h2>
+                <div className="mt-6 max-w-2xl border-l-2 border-rose/50 pl-6">
+                  <p className="lede">{william.heading}</p>
+                  <div className="prose-body mt-5">
+                    {william.copy.map((para) => (
+                      <p key={para}>{para}</p>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal className="mt-10" delay={120}>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  {william.photos.slice(1).map((ph) => (
+                    <div key={ph.src} className="relative aspect-square overflow-hidden bg-slate">
+                      <Image
+                        src={ph.src}
+                        alt={ph.alt}
+                        fill
+                        sizes="(min-width: 640px) 20vw, 45vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>

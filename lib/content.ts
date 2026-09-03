@@ -211,14 +211,13 @@ export const william = {
     "This is a placeholder so the section can be built and reviewed. It is not finished copy.",
   ],
   photos: [
-    { src: "/photos/william/william-chef-clipping.jpg", alt: "William Rivera in chef's whites, in a newspaper clipping" },
-    { src: "/photos/william/william-at-work.jpg", alt: "William Rivera at work, seated in uniform" },
-    { src: "/photos/william/william-kitchen.jpg", alt: "William Rivera in a kitchen with family" },
-    { src: "/photos/william/william-at-home.jpg", alt: "William Rivera at home" },
-    { src: "/photos/william/william-young.jpg", alt: "William Rivera as a young man" },
-    { src: "/photos/william/family-portrait.jpg", alt: "A Rivera family portrait" },
-    { src: "/photos/william/grandchildren-memorial-tees.jpg", alt: "William Rivera's grandchildren wearing memorial shirts" },
-    { src: "/photos/william/graveside.jpg", alt: "The Rivera family gathered at William's graveside" },
+    { src: "/photos/william/william-at-work.jpg", alt: "William Rivera at work, seated in uniform", position: "center" },
+    { src: "/photos/william/william-chef-clipping.jpg", alt: "William Rivera in chef's whites, in a newspaper clipping", position: "top" },
+    { src: "/photos/william/william-kitchen.jpg", alt: "William Rivera in a kitchen with family", position: "center" },
+    { src: "/photos/william/william-at-home.jpg", alt: "William Rivera at home", position: "center" },
+    { src: "/photos/william/william-young.jpg", alt: "William Rivera as a young man", position: "center" },
+    { src: "/photos/william/family-portrait.jpg", alt: "A Rivera family portrait", position: "center" },
+    { src: "/photos/william/graveside.jpg", alt: "The Rivera family gathered at William's graveside", position: "center" },
   ],
 };
 

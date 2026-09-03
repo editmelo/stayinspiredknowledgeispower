@@ -151,7 +151,7 @@ export default function AboutPage() {
                         alt={ph.alt}
                         fill
                         sizes="(min-width: 640px) 20vw, 45vw"
-                        className="object-cover"
+                        className={ph.position === "top" ? "object-cover object-top" : "object-cover"}
                       />
                     </div>
                   ))}

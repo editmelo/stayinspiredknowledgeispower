@@ -125,7 +125,7 @@ export default function ScholarshipPage() {
               },
             ].map((s, i) => (
               <li key={s.t} className="bg-ink p-7">
-                <p className="display text-2xl text-rose-lit">{String(i + 1).padStart(2, "0")}</p>
+                <p className="display text-2xl text-rose">{String(i + 1).padStart(2, "0")}</p>
                 <p className="display d4 mt-4">{s.t}</p>
                 <p className="muted mt-2.5 text-sm">{s.d}</p>
               </li>

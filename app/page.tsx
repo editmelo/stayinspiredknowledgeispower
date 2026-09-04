@@ -41,7 +41,7 @@ export default function Home() {
                 <br />
                 stigma
                 <br />
-                <span className="text-rose-lit">out loud.</span>
+                <span className="text-rose">out loud.</span>
               </h1>
 
               <div className="mt-8 max-w-xl" style={{ animationDelay: "380ms" }}>
@@ -169,12 +169,12 @@ export default function Home() {
                   className="group grid items-baseline gap-2 border-t border-bone/12 py-7 transition-colors hover:bg-bone/4 md:grid-cols-12 md:gap-6 md:px-2"
                 >
                   <p className="eyebrow md:col-span-2 md:pt-1">{b.n}</p>
-                  <h3 className="display d3 md:col-span-4 group-hover:text-rose-lit">
+                  <h3 className="display d3 md:col-span-4 group-hover:text-rose">
                     {b.title}
                   </h3>
                   <p className="muted md:col-span-5 md:pt-1">{b.blurb}</p>
                   <span
-                    className="hidden text-rose-lit transition-transform duration-300 group-hover:translate-x-1.5 md:col-span-1 md:block md:pt-1 md:text-right"
+                    className="hidden text-rose transition-transform duration-300 group-hover:translate-x-1.5 md:col-span-1 md:block md:pt-1 md:text-right"
                     aria-hidden="true"
                   >
                     →
@@ -230,7 +230,7 @@ export default function Home() {
                 {speaking.credibility.map((c, i) => (
                   <Reveal as="div" key={c.label} delay={i * 70}>
                     <div className="grid gap-1.5 border-t border-bone/12 py-6 md:grid-cols-3 md:gap-8">
-                      <dt className={`display d4 ${["text-sage", "text-gold", "text-coral"][i] ?? "text-rose-lit"}`}>
+                      <dt className={`display d4 ${["text-sage", "text-gold", "text-coral"][i] ?? "text-rose"}`}>
                         {c.label}
                       </dt>
                       <dd className="muted md:col-span-2">{c.body}</dd>
@@ -378,7 +378,7 @@ export default function Home() {
                 href={`/resources#${g.id}`}
                 className="group flex flex-col bg-ink p-7 transition-colors hover:bg-coal"
               >
-                <h3 className="display d4 group-hover:text-rose-lit">{g.title}</h3>
+                <h3 className="display d4 group-hover:text-rose">{g.title}</h3>
                 <p className="muted mt-3 flex-1 text-sm">{g.blurb}</p>
                 <p className="eyebrow mt-6">{g.items.length} resources</p>
               </Link>

@@ -75,7 +75,7 @@ export default function SpeakingPage() {
               <div className="mt-10 space-y-px bg-bone/12">
                 {speaking.credibility.map((c, i) => (
                   <Reveal as="div" key={c.label} className="bg-coal p-7">
-                    <p className={`display d3 ${["text-sage", "text-gold", "text-coral"][i] ?? "text-rose-lit"}`}>
+                    <p className={`display d3 ${["text-sage", "text-gold", "text-coral"][i] ?? "text-rose"}`}>
                       {c.label}
                     </p>
                     <p className="muted mt-3">{c.body}</p>
@@ -143,7 +143,7 @@ export default function SpeakingPage() {
                   },
                 ].map((s, i) => (
                   <li key={s.t} className="flex gap-5">
-                    <span className="display shrink-0 text-2xl text-rose-lit">
+                    <span className="display shrink-0 text-2xl text-rose">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span>
@@ -172,7 +172,7 @@ export default function SpeakingPage() {
                 <div className="flex gap-3">
                   <dt className="eyebrow w-16 shrink-0 pt-1">Email</dt>
                   <dd>
-                    <a href={`mailto:${speaking.email}`} className="transition-colors hover:text-rose-lit">
+                    <a href={`mailto:${speaking.email}`} className="transition-colors hover:text-rose">
                       {speaking.email}
                     </a>
                   </dd>
@@ -180,7 +180,7 @@ export default function SpeakingPage() {
                 <div className="flex gap-3">
                   <dt className="eyebrow w-16 shrink-0 pt-1">Phone</dt>
                   <dd>
-                    <a href={`tel:${speaking.phoneHref}`} className="transition-colors hover:text-rose-lit">
+                    <a href={`tel:${speaking.phoneHref}`} className="transition-colors hover:text-rose">
                       {speaking.phone}
                     </a>
                   </dd>

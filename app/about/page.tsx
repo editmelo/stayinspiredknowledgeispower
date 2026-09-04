@@ -201,12 +201,12 @@ export default function AboutPage() {
                   className="group grid items-baseline gap-2 border-t border-bone/12 py-6 transition-colors hover:bg-bone/4 md:grid-cols-12 md:gap-6 md:px-2"
                 >
                   <p className="eyebrow md:col-span-2 md:pt-1">{b.n}</p>
-                  <h3 className="display d4 md:col-span-4 group-hover:text-rose-lit">
+                  <h3 className="display d4 md:col-span-4 group-hover:text-rose">
                     {b.title}
                   </h3>
                   <p className="muted text-sm md:col-span-5 md:pt-1">{b.blurb}</p>
                   <span
-                    className="hidden text-rose-lit transition-transform duration-300 group-hover:translate-x-1.5 md:col-span-1 md:block md:pt-1 md:text-right"
+                    className="hidden text-rose transition-transform duration-300 group-hover:translate-x-1.5 md:col-span-1 md:block md:pt-1 md:text-right"
                     aria-hidden="true"
                   >
                     →

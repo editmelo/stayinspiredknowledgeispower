@@ -143,7 +143,7 @@ export default function Nav() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="display d3 border-b border-bone/10 py-4 transition-colors hover:text-rose-lit"
+              className="display d3 border-b border-bone/10 py-4 transition-colors hover:text-rose"
               style={{ animation: open ? `rise .6s var(--ease-out-quint) ${i * 45}ms both` : undefined }}
             >
               {item.label}

@@ -56,7 +56,7 @@ export default function ZipFinder() {
       </div>
 
       {error ? (
-        <p id="zip-error" role="alert" className="mt-3 text-sm text-rose-lit">
+        <p id="zip-error" role="alert" className="mt-3 text-sm text-rose">
           {error}
         </p>
       ) : (

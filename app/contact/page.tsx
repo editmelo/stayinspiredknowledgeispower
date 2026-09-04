@@ -37,7 +37,7 @@ export default function ContactPage() {
               <p className="eyebrow">Direct</p>
               <a
                 href={`mailto:${org.email}`}
-                className="mt-3 block text-xl wrap-anywhere transition-colors hover:text-rose-lit md:text-2xl"
+                className="mt-3 block text-xl wrap-anywhere transition-colors hover:text-rose md:text-2xl"
               >
                 {org.email}
               </a>

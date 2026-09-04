@@ -104,7 +104,7 @@ export function Fact({
 }) {
   return (
     <div>
-      <p className="stat-n text-rose-lit">{value}</p>
+      <p className="stat-n text-rose">{value}</p>
       <p className="eyebrow mt-3">{label}</p>
       {detail && <p className="muted mt-2 text-sm">{detail}</p>}
     </div>

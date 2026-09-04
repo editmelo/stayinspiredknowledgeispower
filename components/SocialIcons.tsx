@@ -39,7 +39,7 @@ export default function SocialIcons({
             rel="noopener noreferrer"
             aria-label={`${s.label} — opens in a new tab`}
             title={s.label}
-            className="block text-ash transition-colors hover:text-rose-lit"
+            className="block text-ash transition-colors hover:text-rose"
           >
             <svg viewBox="0 0 24 24" className={size} fill="currentColor" aria-hidden="true">
               {glyphs[s.icon]}

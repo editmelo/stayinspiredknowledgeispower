@@ -59,7 +59,7 @@ export default function ShopPage() {
                   <Image src={c.image} alt="" width={200} height={200} className="size-full" />
                 </div>
                 <div>
-                  <p className="display d4 group-hover:text-rose-lit">{c.name}</p>
+                  <p className="display d4 group-hover:text-rose">{c.name}</p>
                   <p className="eyebrow mt-1.5">
                     {c.count} {c.count === 1 ? "design" : "designs"} · from ${c.from}
                   </p>

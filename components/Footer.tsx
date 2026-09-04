@@ -35,7 +35,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5">
               {[...nav, { label: "Contact", href: "/contact" }].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-bone/75 transition-colors hover:text-rose-lit">
+                  <Link href={item.href} className="text-sm text-bone/75 transition-colors hover:text-rose">
                     {item.label}
                   </Link>
                 </li>
@@ -52,7 +52,7 @@ export default function Footer() {
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-bone/75 transition-colors hover:text-rose-lit"
+                    className="text-sm text-bone/75 transition-colors hover:text-rose"
                   >
                     {l.label}
                   </a>
@@ -63,7 +63,7 @@ export default function Footer() {
             <p className="eyebrow mt-8">Contact</p>
             <a
               href={`mailto:${org.email}`}
-              className="mt-3 block text-sm break-all text-bone/75 transition-colors hover:text-rose-lit"
+              className="mt-3 block text-sm break-all text-bone/75 transition-colors hover:text-rose"
             >
               {org.email}
             </a>
@@ -83,7 +83,7 @@ export default function Footer() {
                 href={org.credit.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-ash/40 underline-offset-3 transition-colors hover:text-rose-lit hover:decoration-rose-lit"
+                className="underline decoration-ash/40 underline-offset-3 transition-colors hover:text-rose hover:decoration-rose"
               >
                 {org.credit.label}
               </a>

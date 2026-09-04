@@ -63,7 +63,7 @@ export default function LearnPage() {
           <dl className="mt-16 grid gap-px bg-bone/12 md:grid-cols-3">
             {education.points.map((p) => (
               <div key={p.label} className="bg-coal p-7">
-                <dt className="display d4 text-rose-lit">{p.label}</dt>
+                <dt className="display d4 text-rose">{p.label}</dt>
                 <dd className="muted mt-3 text-sm">{p.body}</dd>
               </div>
             ))}
@@ -135,7 +135,7 @@ export default function LearnPage() {
                 href={`/resources#${g.id}`}
                 className="group bg-ink p-6 transition-colors hover:bg-coal"
               >
-                <p className="display d4 group-hover:text-rose-lit">{g.title}</p>
+                <p className="display d4 group-hover:text-rose">{g.title}</p>
                 <p className="muted mt-2 text-sm">{g.blurb}</p>
               </Link>
             ))}

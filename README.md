@@ -68,6 +68,60 @@ All of these were pulled from the current Wix site, so they are the same photos 
 
 ---
 
+## Connecting Square
+
+The shop is wired for **Square-hosted checkout**. Card details never touch this
+site: we create a payment link server-side and send the shopper to Square, so
+Square handles the card form, PCI, receipts and refunds — and the sale lands in
+the same Square account as her in-person vendor-booth takings.
+
+Until the two credentials below exist, product cards behave exactly as they
+always have: they open the existing store. Nothing breaks while this is unset.
+
+### What Miriam needs to do
+
+1. Sign in at **developer.squareup.com/apps** with the same login she uses for
+   Square. Her seller account already works here; there is nothing new to buy.
+2. **+ Create app**, name it something like `Stay Inspired Website`.
+3. Open the app, then **Credentials**. Note the **Sandbox** / **Production**
+   toggle at the top — they are different tokens, and the sandbox one charges
+   nothing. Copy the **Access token**.
+4. Go to **Locations** in the same app and copy the **Location ID**.
+
+Send those two values to the developer **privately** — a password manager, or
+1Password/Bitwarden send. Not email, not Slack, and never into this repo: it is
+public, and a leaked access token can take payments as her.
+
+### What the developer does with them
+
+```bash
+cp .env.example .env.local     # .env* is gitignored
+# paste SQUARE_ACCESS_TOKEN and SQUARE_LOCATION_ID
+npm run dev
+```
+
+Test with Square's sandbox card `4111 1111 1111 1111`, any future expiry, any
+CVV. Then set the same two variables on the host (Vercel: Project → Settings →
+Environment Variables) and switch `SQUARE_ENVIRONMENT` to `production` with the
+production token.
+
+### What is built
+
+- `lib/square.ts` — creates the hosted payment link (REST, no SDK dependency).
+- `app/api/checkout/route.ts` — takes slugs and quantities, looks prices up
+  **server-side**, returns the Square URL. A tampered request cannot change the
+  price charged.
+- `components/BuyButton.tsx` — the client button, with its own error state.
+- `/shop/thank-you` — where Square returns the shopper after paying.
+
+### Still to do once it is live
+
+- **No cart.** Each button buys one item. A multi-item cart is a follow-up;
+  `createCheckoutLink` already accepts several line items.
+- **Shipping and tax.** Square collects the delivery address, but shipping
+  rates and tax must be configured in the Square Dashboard.
+- **Inventory** is not synced. Square will not stop a sale when she runs out.
+
 ## Things to confirm with Miriam before launch
 
 These are written as accurately as the brief allowed, but a few need her sign-off:

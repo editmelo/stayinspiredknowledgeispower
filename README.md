@@ -75,8 +75,9 @@ site: we create a payment link server-side and send the shopper to Square, so
 Square handles the card form, PCI, receipts and refunds — and the sale lands in
 the same Square account as her in-person vendor-booth takings.
 
-Until the two credentials below exist, product cards behave exactly as they
-always have: they open the existing store. Nothing breaks while this is unset.
+Until the two credentials below exist, the cart is absent and product cards
+simply link to the shop page. Nothing breaks while this is unset, and nothing
+points at the old Wix store — that link has been removed from the site.
 
 ### What Miriam needs to do
 
@@ -164,7 +165,7 @@ different location IDs. Mixing a sandbox token with a production location fails.
 
 These are written as accurately as the brief allowed, but a few need her sign-off:
 
-1. **Checkout is now on-site via Square** (see "Connecting Square" above), verified end to end against Square's sandbox. Cards fall back to the Wix store (`org.legacyStore`) only when the credentials are absent at build time.
+1. **Checkout is now on-site via Square** (see "Connecting Square" above), verified end to end against Square's sandbox. Nothing links to the old Wix store any more; `org.legacyStore` and `org.legacyDonate` have been deleted. If the credentials are absent at build time the cart disappears and cards link to `/shop`.
 2. **Instagram handle — likely wrong.** The site links `@getfitwmiriam`, the only handle supplied. Her own printed bookmarks name two different accounts: **`knowledge_is_powerllc`** for the company and **`miriamdr.speaksllc`** for the speaking brand. Not changed without a say-so, but the current link is probably not where supporters should be sent. Facebook, Instagram and LinkedIn are the three shown; there is no TikTok.
 3. **"Mental Health Alliance."** The meeting notes said Alliance; the resource list uses **Mental Health America** (`mhanational.org`), which is almost certainly what was meant. Worth a check.
 4. **Child welfare / DCS.** Described as "years of work in Indiana child welfare" rather than naming the agency or a title, since the brief only said "DCS background." She should set the exact wording.

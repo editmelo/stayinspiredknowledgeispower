@@ -11,8 +11,6 @@ export const org = {
   verseRef: "Proverbs 3:13",
   email: "love.inspiresfaith@gmail.com",
   region: "Indiana",
-  legacyStore: "https://www.stayinspiredknowledgeispower.com/shop",
-  legacyDonate: "https://www.stayinspiredknowledgeispower.com",
   credit: { label: "Edit Me Lo", href: "https://www.editmelo.com" },
   socials: [
     {

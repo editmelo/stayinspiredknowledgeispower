@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
-import { org, type Product } from "@/lib/content";
+import { type Product } from "@/lib/content";
 import { getSquareConfig } from "@/lib/square";
 
 function Shot({ product, priority }: { product: Product; priority: boolean }) {
@@ -40,18 +41,16 @@ export default function ProductCard({
   product: Product;
   priority?: boolean;
 }) {
-  /* Once Square is connected the card sells directly; until then it opens the
-     existing store, which is what it has always done. */
+  /* Once Square is connected the card sells directly. Until then it points at
+     the shop page — nothing leaves the site. */
   const squareReady = getSquareConfig() !== null;
 
   if (!squareReady) {
     return (
-      <a
-        href={org.legacyStore}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        href="/shop"
         className="card group h-full"
-        aria-label={`${product.name}, $${product.price} — opens the shop in a new tab`}
+        aria-label={`${product.name}, $${product.price}`}
       >
         <Shot product={product} priority={priority} />
         <div className="flex flex-1 flex-col p-5">
@@ -63,7 +62,7 @@ export default function ProductCard({
             </span>
           </p>
         </div>
-      </a>
+      </Link>
     );
   }
 

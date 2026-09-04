@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
 import { type Product } from "@/lib/content";
-import { getSquareConfig } from "@/lib/square";
 
 function Shot({ product, priority }: { product: Product; priority: boolean }) {
   return (
@@ -27,7 +26,9 @@ function Meta({ product }: { product: Product }) {
     <>
       <div className="flex items-start justify-between gap-4">
         <h3 className="display d4">{product.name}</h3>
-        <p className="display shrink-0 text-lg tracking-tight">${product.price}</p>
+        <p className="display shrink-0 text-lg tracking-tight">
+          ${product.price}
+        </p>
       </div>
       <p className="muted mt-2.5 text-sm">{product.note}</p>
     </>
@@ -37,14 +38,15 @@ function Meta({ product }: { product: Product }) {
 export default function ProductCard({
   product,
   priority = false,
+  squareReady,
 }: {
   product: Product;
   priority?: boolean;
+  /* Read on the server and passed down, so this card can also render inside a
+     client component. Once Square is connected the card sells directly; until
+     then it points at the shop page — nothing leaves the site. */
+  squareReady: boolean;
 }) {
-  /* Once Square is connected the card sells directly. Until then it points at
-     the shop page — nothing leaves the site. */
-  const squareReady = getSquareConfig() !== null;
-
   if (!squareReady) {
     return (
       <Link
@@ -57,7 +59,10 @@ export default function ProductCard({
           <Meta product={product} />
           <p className="cta-mini mt-5">
             Shop this
-            <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
+            <span
+              className="transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            >
               →
             </span>
           </p>

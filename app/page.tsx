@@ -7,6 +7,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 import Waveform from "@/components/Waveform";
 import WornStrip from "@/components/WornStrip";
 import { Fact, SectionHead } from "@/components/ui";
+import { getSquareConfig } from "@/lib/square";
 import {
   buckets,
   education,
@@ -19,11 +20,18 @@ import {
 } from "@/lib/content";
 
 /** One product from each of the four categories, so the range reads at a glance. */
-const featured = ["music-is-my-therapy", "mental-health-apron", "rock-out-tumbler", "mental-health-bracelet"]
+const featured = [
+  "music-is-my-therapy",
+  "mental-health-apron",
+  "rock-out-tumbler",
+  "mental-health-bracelet",
+]
   .map((slug) => products.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
 export default function Home() {
+  const squareReady = getSquareConfig() !== null;
+
   return (
     <>
       {/* ---------------------------------------------------- hero ------ */}
@@ -36,7 +44,10 @@ export default function Home() {
                 Founded by {org.founder} · {org.region}
               </p>
 
-              <h1 className="display d1 mt-6" style={{ animationDelay: "180ms" }}>
+              <h1
+                className="display d1 mt-6"
+                style={{ animationDelay: "180ms" }}
+              >
                 Break the
                 <br />
                 stigma
@@ -44,17 +55,31 @@ export default function Home() {
                 <span className="text-rose">out loud.</span>
               </h1>
 
-              <div className="mt-8 max-w-xl" style={{ animationDelay: "380ms" }}>
-                <Waveform variant="loud" count={64} height={38} label="Sound wave, the mark of the brand" />
+              <div
+                className="mt-8 max-w-xl"
+                style={{ animationDelay: "380ms" }}
+              >
+                <Waveform
+                  variant="loud"
+                  count={64}
+                  height={38}
+                  label="Sound wave, the mark of the brand"
+                />
               </div>
 
-              <p className="lede mt-8 max-w-xl" style={{ animationDelay: "480ms" }}>
-                Art, fashion and lived experience that make mental illness and addiction
-                sayable — and put a portion of every sale into a scholarship for students
-                who grew up inside it.
+              <p
+                className="lede mt-8 max-w-xl"
+                style={{ animationDelay: "480ms" }}
+              >
+                Art, fashion and lived experience that make mental illness and
+                addiction sayable — and put a portion of every sale into a
+                scholarship for students who grew up inside it.
               </p>
 
-              <div className="mt-9 flex flex-wrap gap-3" style={{ animationDelay: "580ms" }}>
+              <div
+                className="mt-9 flex flex-wrap gap-3"
+                style={{ animationDelay: "580ms" }}
+              >
                 <Link href="/shop" className="btn btn-rose">
                   Shop the collection
                 </Link>
@@ -98,7 +123,11 @@ export default function Home() {
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((p, i) => (
               <Reveal key={p.slug} delay={i * 60} className="h-full">
-                <ProductCard product={p} priority={i < 4} />
+                <ProductCard
+                  product={p}
+                  priority={i < 4}
+                  squareReady={squareReady}
+                />
               </Reveal>
             ))}
           </div>
@@ -119,7 +148,9 @@ export default function Home() {
         <div className="shell band-tight">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-6">
-              <p className="eyebrow !text-bone/65">The promise behind every product</p>
+              <p className="eyebrow !text-bone/65">
+                The promise behind every product
+              </p>
               <p className="quote mt-4">
                 A portion of all proceeds goes into the William Rivera Memorial
                 Scholarship Fund.
@@ -137,8 +168,9 @@ export default function Home() {
                 </div>
               </div>
               <p className="mt-8 max-w-md text-bone/80">
-                Open to high school, college and trade students who have a parent diagnosed
-                with a mental illness or a substance use disorder.
+                Open to high school, college and trade students who have a
+                parent diagnosed with a mental illness or a substance use
+                disorder.
               </p>
             </div>
           </div>
@@ -220,7 +252,9 @@ export default function Home() {
                     <h2 className="display d2">
                       <span className="nowrap">Miriam dr.</span> Speaks
                     </h2>
-                    <p className="eyebrow mt-2.5 !text-gold">{speaking.tagline}</p>
+                    <p className="eyebrow mt-2.5 !text-gold">
+                      {speaking.tagline}
+                    </p>
                   </div>
                 </div>
                 <p className="lede mt-7 max-w-2xl">{speaking.lede}</p>
@@ -230,7 +264,9 @@ export default function Home() {
                 {speaking.credibility.map((c, i) => (
                   <Reveal as="div" key={c.label} delay={i * 70}>
                     <div className="grid gap-1.5 border-t border-bone/12 py-6 md:grid-cols-3 md:gap-8">
-                      <dt className={`display d4 ${["text-sage", "text-gold", "text-coral"][i] ?? "text-rose"}`}>
+                      <dt
+                        className={`display d4 ${["text-sage", "text-gold", "text-coral"][i] ?? "text-rose"}`}
+                      >
                         {c.label}
                       </dt>
                       <dd className="muted md:col-span-2">{c.body}</dd>
@@ -345,16 +381,23 @@ export default function Home() {
               <p className="eyebrow">Who qualifies</p>
               <ul className="mt-5 space-y-4">
                 {scholarship.eligibility.map((e) => (
-                  <li key={e} className="flex gap-4 border-b border-ink/10 pb-4">
-                    <span className="mt-2.5 h-1.5 w-4 shrink-0 bg-leaf" aria-hidden="true" />
+                  <li
+                    key={e}
+                    className="flex gap-4 border-b border-ink/10 pb-4"
+                  >
+                    <span
+                      className="mt-2.5 h-1.5 w-4 shrink-0 bg-leaf"
+                      aria-hidden="true"
+                    />
                     <span>{e}</span>
                   </li>
                 ))}
               </ul>
               <p className="muted mt-6 text-sm">
-                Named for Miriam&rsquo;s father, William. The requirement is deliberate:
-                this is the one thing on a student&rsquo;s life that never shows up on a
-                transcript, and almost never on a scholarship form either.
+                Named for Miriam&rsquo;s father, William. The requirement is
+                deliberate: this is the one thing on a student&rsquo;s life that
+                never shows up on a transcript, and almost never on a
+                scholarship form either.
               </p>
             </div>
           </div>
@@ -402,7 +445,9 @@ export default function Home() {
               height={220}
               className="mx-auto size-24 md:size-28"
             />
-            <p className="quote mx-auto mt-8 max-w-2xl">&ldquo;{org.verse}&rdquo;</p>
+            <p className="quote mx-auto mt-8 max-w-2xl">
+              &ldquo;{org.verse}&rdquo;
+            </p>
             <p className="eyebrow mt-4">{org.verseRef}</p>
 
             <div className="mx-auto mt-10 max-w-2xl">

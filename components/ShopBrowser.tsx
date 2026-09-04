@@ -70,14 +70,16 @@ export default function ShopBrowser({ squareReady }: { squareReady: boolean }) {
             })}
           </div>
 
-          <button
-            type="button"
-            onClick={() => setFilter("All")}
-            aria-pressed={filter === "All"}
-            className={`tlink mt-5 ${filter === "All" ? "text-rose" : ""}`}
-          >
-            All products
-          </button>
+          <div className="mt-5 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setFilter("All")}
+              aria-pressed={filter === "All"}
+              className={`tlink ${filter === "All" ? "text-rose" : ""}`}
+            >
+              All products
+            </button>
+          </div>
         </div>
       </section>
 

@@ -87,8 +87,6 @@ export type Product = {
   price: number;
   category: "Shirts" | "Aprons" | "Drinkware" | "Bracelets";
   image: string;
-  /** Second colourway, where a product has one. */
-  altImage?: string;
   note: string;
   featured?: boolean;
 };
@@ -140,13 +138,21 @@ export const products: Product[] = [
     featured: true,
   },
   {
-    slug: "piano-keys-tee",
-    name: "MJ Piano Keys Tee",
+    slug: "mj-piano-keys-tee-white",
+    name: "MJ Piano Keys Tee White",
     price: 25,
     category: "Shirts",
     image: "/products/piano-keys-tee-white.jpg",
-    altImage: "/products/piano-keys-tee-black.jpg",
-    note: "A keyboard mid-run, notes coming off it. In white or black.",
+    note: "A keyboard mid-run, notes coming off it.",
+    featured: true,
+  },
+  {
+    slug: "mj-piano-keys-tee-black",
+    name: "MJ Piano Keys Tee Black",
+    price: 25,
+    category: "Shirts",
+    image: "/products/piano-keys-tee-black.jpg",
+    note: "The same keyboard, inverted.",
     featured: true,
   },
   {
@@ -192,12 +198,22 @@ export const products: Product[] = [
   },
 ];
 
-export const categories = [
-  { name: "Shirts", from: 25, count: 7, image: "/products/music-is-my-therapy.jpg" },
-  { name: "Aprons", from: 25, count: 1, image: "/products/mental-health-apron.jpg" },
-  { name: "Drinkware", from: 25, count: 1, image: "/products/rock-out-tumbler.jpg" },
-  { name: "Bracelets", from: 5, count: 1, image: "/products/mental-health-bracelet.jpg" },
-];
+/** Counted off `products` so the shop index cannot drift from the range. */
+export const categories = (
+  [
+    { name: "Shirts", image: "/products/music-is-my-therapy.jpg" },
+    { name: "Aprons", image: "/products/mental-health-apron.jpg" },
+    { name: "Drinkware", image: "/products/rock-out-tumbler.jpg" },
+    { name: "Bracelets", image: "/products/mental-health-bracelet.jpg" },
+  ] as const
+).map((c) => {
+  const inCategory = products.filter((p) => p.category === c.name);
+  return {
+    ...c,
+    count: inCategory.length,
+    from: Math.min(...inCategory.map((p) => p.price)),
+  };
+});
 
 /**
  * The memorial section on /about.

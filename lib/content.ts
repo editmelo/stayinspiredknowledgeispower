@@ -26,6 +26,11 @@ export const org = {
       href: "https://www.instagram.com/getfitwmiriam/",
     },
     {
+      label: "TikTok",
+      icon: "tiktok",
+      href: "https://www.tiktok.com/@stay.inspiredllc",
+    },
+    {
       label: "LinkedIn",
       icon: "linkedin",
       href: "https://www.linkedin.com/in/miriam-d-rivera-158a2b350/",

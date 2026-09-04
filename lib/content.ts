@@ -136,13 +136,12 @@ export const products: Product[] = [
   },
   {
     slug: "piano-keys-tee",
-    name: "Piano Keys Tee",
-    /* TODO price unconfirmed — matched to the other full-front prints. */
-    price: 30,
+    name: "MJ Piano Keys Tee",
+    price: 25,
     category: "Shirts",
-    image: "/products/piano-keys-tee-black.jpg",
-    altImage: "/products/piano-keys-tee-white.jpg",
-    note: "A keyboard mid-run, notes coming off it. In black or white.",
+    image: "/products/piano-keys-tee-white.jpg",
+    altImage: "/products/piano-keys-tee-black.jpg",
+    note: "A keyboard mid-run, notes coming off it. In white or black.",
     featured: true,
   },
   {
@@ -210,8 +209,13 @@ export const william = {
     "Miriam is writing this part herself — her father's story, in her words.",
     "This is a placeholder so the section can be built and reviewed. It is not finished copy.",
   ],
-  photos: [
+  /* Stacked in the left column; the pair fills the height of the collage. */
+  lead: [
     { src: "/photos/william/william-at-work.jpg", alt: "William Rivera at work, seated in uniform", position: "center" },
+    { src: "/photos/william/miriam-and-children-memorial-tees.jpg", alt: "Miriam with her children, all wearing shirts in memory of William", position: "center" },
+  ],
+  /* The collage on the right. */
+  grid: [
     { src: "/photos/william/william-chef-clipping.jpg", alt: "William Rivera in chef's whites, in a newspaper clipping", position: "top" },
     { src: "/photos/william/william-kitchen.jpg", alt: "William Rivera in a kitchen with family", position: "center" },
     { src: "/photos/william/william-at-home.jpg", alt: "William Rivera at home", position: "center" },
@@ -220,6 +224,7 @@ export const william = {
     { src: "/photos/william/graveside.jpg", alt: "The Rivera family gathered at William's graveside", position: "center" },
   ],
 };
+;
 
 export const speaking = {
   brand: "Miriam dr. Speaks",

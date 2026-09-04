@@ -116,15 +116,24 @@ export default function AboutPage() {
       <section className="relative overflow-hidden border-t border-bone/10">
         <div className="shell band">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            {/* Two photographs stacked. On wide screens the pair stretches to
+                the height of the collage opposite, so both columns land level. */}
             <Reveal className="lg:col-span-5">
-              <div className="relative aspect-3/4 overflow-hidden bg-slate">
-                <Image
-                  src={william.photos[0].src}
-                  alt={william.photos[0].alt}
-                  fill
-                  sizes="(min-width: 1024px) 38vw, 100vw"
-                  className="object-cover"
-                />
+              <div className="grid gap-3 lg:h-full lg:grid-rows-2">
+                {william.lead.map((ph) => (
+                  <div
+                    key={ph.src}
+                    className="relative aspect-4/5 overflow-hidden bg-slate lg:aspect-auto"
+                  >
+                    <Image
+                      src={ph.src}
+                      alt={ph.alt}
+                      fill
+                      sizes="(min-width: 1024px) 38vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
               </div>
             </Reveal>
 
@@ -144,7 +153,7 @@ export default function AboutPage() {
 
               <Reveal className="mt-10" delay={120}>
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                  {william.photos.slice(1).map((ph) => (
+                  {william.grid.map((ph) => (
                     <div key={ph.src} className="relative aspect-square overflow-hidden bg-slate">
                       <Image
                         src={ph.src}

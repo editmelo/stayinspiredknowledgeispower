@@ -69,7 +69,7 @@ export async function createCheckoutLink(
     throw new SquareError("Cannot start a checkout with no items.", 400);
   }
 
-  const res = await fetch(`${config.apiBase}/v2/checkout/payment-links`, {
+  const res = await fetch(`${config.apiBase}/v2/online-checkout/payment-links`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${config.accessToken}`,

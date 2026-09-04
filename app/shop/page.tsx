@@ -5,7 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
 import WornStrip from "@/components/WornStrip";
 import { PageHero, SectionHead } from "@/components/ui";
-import { categories, org, products, scholarship } from "@/lib/content";
+import { categories, products, scholarship } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Shop the collection",
@@ -31,13 +31,8 @@ export default function ShopPage() {
         lede="Most merch is a logo. This is a message — roses, wings and music notes that give someone permission to bring up the thing nobody brings up. A portion of every sale goes into the scholarship fund."
       >
         <div className="flex flex-wrap gap-3">
-          <a
-            href={org.legacyStore}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-rose"
-          >
-            Open the store
+          <a href="#shirts" className="btn btn-rose">
+            Shop the collection
           </a>
           <Link href="/scholarship" className="btn btn-ghost">
             See what it funds

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BuyButton from "./BuyButton";
+import AddToCartButton from "./AddToCartButton";
 import { org, type Product } from "@/lib/content";
 import { getSquareConfig } from "@/lib/square";
 
@@ -73,7 +73,7 @@ export default function ProductCard({
       <div className="flex flex-1 flex-col p-5">
         <Meta product={product} />
         <div className="mt-5 flex-1" />
-        <BuyButton slug={product.slug} name={product.name} />
+        <AddToCartButton slug={product.slug} name={product.name} />
       </div>
     </div>
   );

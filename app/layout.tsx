@@ -2,7 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Bodoni_Moda, Instrument_Sans } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import CartProvider from "@/components/CartProvider";
+import CartDrawer from "@/components/CartDrawer";
 import { org } from "@/lib/content";
+import { getSquareConfig } from "@/lib/square";
 import "./globals.css";
 
 /* Bodoni carries the fashion side of the brand; Instrument Sans does the reading. */
@@ -51,17 +54,23 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  /* Read once on the server: the cart only appears when it can actually sell. */
+  const squareReady = getSquareConfig() !== null;
+
   return (
     <html lang="en" className={`${bodoni.variable} ${instrument.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <a href="#main" className="skip">
-          Skip to content
-        </a>
-        <Nav />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <CartProvider enabled={squareReady}>
+          <a href="#main" className="skip">
+            Skip to content
+          </a>
+          <Nav />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );

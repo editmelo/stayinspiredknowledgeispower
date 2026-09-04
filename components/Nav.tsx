@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav } from "@/lib/content";
+import CartButton from "./CartButton";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -106,27 +107,31 @@ export default function Nav() {
             </Link>
           </nav>
 
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            className="flex items-center gap-2.5 text-[0.7rem] font-semibold tracking-[0.16em] uppercase lg:hidden"
-          >
-            {open ? "Close" : "Menu"}
-            <span className="flex w-5 flex-col gap-[5px]" aria-hidden="true">
-              <span
-                className={`h-px w-full bg-current transition-transform duration-300 ${
-                  open ? "translate-y-[3px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`h-px w-full bg-current transition-transform duration-300 ${
-                  open ? "-translate-y-[3px] -rotate-45" : ""
-                }`}
-              />
-            </span>
-          </button>
+          <div className="flex items-center gap-5">
+            <CartButton onOpen={() => setOpen(false)} />
+
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              className="flex items-center gap-2.5 text-[0.7rem] font-semibold tracking-[0.16em] uppercase lg:hidden"
+            >
+              {open ? "Close" : "Menu"}
+              <span className="flex w-5 flex-col gap-[5px]" aria-hidden="true">
+                <span
+                  className={`h-px w-full bg-current transition-transform duration-300 ${
+                    open ? "translate-y-[3px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`h-px w-full bg-current transition-transform duration-300 ${
+                    open ? "-translate-y-[3px] -rotate-45" : ""
+                  }`}
+                />
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 

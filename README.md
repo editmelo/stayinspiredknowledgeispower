@@ -92,41 +92,79 @@ Send those two values to the developer **privately** — a password manager, or
 1Password/Bitwarden send. Not email, not Slack, and never into this repo: it is
 public, and a leaked access token can take payments as her.
 
-### What the developer does with them
+### Local development
 
 ```bash
 cp .env.example .env.local     # .env* is gitignored
-# paste SQUARE_ACCESS_TOKEN and SQUARE_LOCATION_ID
+# paste the SANDBOX token and the SANDBOX location ID
 npm run dev
 ```
 
 Test with Square's sandbox card `4111 1111 1111 1111`, any future expiry, any
-CVV. Then set the same two variables on the host (Vercel: Project → Settings →
-Environment Variables) and switch `SQUARE_ENVIRONMENT` to `production` with the
-production token.
+CVV. No real money moves.
+
+**Keep local on sandbox permanently.** Production credentials on a laptop mean a
+stray test charges a real card. Production values belong only on the host.
+
+### Production on Vercel
+
+Set the three variables in **Project → Settings → Environment Variables**, scoped
+to **Production** only:
+
+| Name | Value |
+|---|---|
+| `SQUARE_ACCESS_TOKEN` | the **production** access token |
+| `SQUARE_LOCATION_ID` | the **production** location ID |
+| `SQUARE_ENVIRONMENT` | `production` |
+
+Or with the CLI (`npm i -g vercel`, then `vercel link`):
+
+```bash
+vercel env add SQUARE_ACCESS_TOKEN production   # prompts, value is not echoed
+vercel env add SQUARE_LOCATION_ID production
+vercel env add SQUARE_ENVIRONMENT production
+```
+
+**These are read at build time.** `/shop` is statically prerendered, so whether
+the cart appears is decided when the site builds, not when someone visits.
+Changing any of these variables requires a **redeploy** before it takes effect.
+Set them before the first production deploy, or redeploy straight after.
+
+Sandbox and production are separate accounts with different tokens *and*
+different location IDs. Mixing a sandbox token with a production location fails.
 
 ### What is built
 
-- `lib/square.ts` — creates the hosted payment link (REST, no SDK dependency).
+- `lib/square.ts` — creates the hosted payment link at
+  `/v2/online-checkout/payment-links` (REST, no SDK dependency).
 - `app/api/checkout/route.ts` — takes slugs and quantities, looks prices up
   **server-side**, returns the Square URL. A tampered request cannot change the
-  price charged.
-- `components/BuyButton.tsx` — the client button, with its own error state.
+  price charged; this is verified against the live sandbox.
+- `components/CartProvider.tsx` — cart state, persisted to `localStorage` via
+  `useSyncExternalStore`. Stores slugs and quantities only, never prices, and
+  drops any slug no longer in the catalog.
+- `components/CartDrawer.tsx` — the panel: quantities, subtotal, checkout.
+  Focus-trapped, Escape closes, background scroll locked.
+- `components/AddToCartButton.tsx`, `components/CartButton.tsx` — the card
+  button and the header trigger with its count.
+- `components/ClearCart.tsx` — empties the cart on `/shop/thank-you` only, so
+  abandoning Square's checkout leaves the cart intact.
 - `/shop/thank-you` — where Square returns the shopper after paying.
 
 ### Still to do once it is live
 
-- **No cart.** Each button buys one item. A multi-item cart is a follow-up;
-  `createCheckoutLink` already accepts several line items.
 - **Shipping and tax.** Square collects the delivery address, but shipping
-  rates and tax must be configured in the Square Dashboard.
+  rates and tax must be configured in the Square Dashboard. Until then she
+  absorbs postage on every order.
 - **Inventory** is not synced. Square will not stop a sale when she runs out.
+- **No order confirmation from us.** Square emails the receipt; the site sends
+  nothing and keeps no record of orders.
 
 ## Things to confirm with Miriam before launch
 
 These are written as accurately as the brief allowed, but a few need her sign-off:
 
-1. **Checkout.** Product cards open the existing Wix store in a new tab (`org.legacyStore` in `content.ts`). Real on-site checkout would need a commerce integration — Stripe or Shopify via the Vercel Marketplace — which is a separate piece of work.
+1. **Checkout is now on-site via Square** (see "Connecting Square" above), verified end to end against Square's sandbox. Cards fall back to the Wix store (`org.legacyStore`) only when the credentials are absent at build time.
 2. **Instagram handle — likely wrong.** The site links `@getfitwmiriam`, the only handle supplied. Her own printed bookmarks name two different accounts: **`knowledge_is_powerllc`** for the company and **`miriamdr.speaksllc`** for the speaking brand. Not changed without a say-so, but the current link is probably not where supporters should be sent. Facebook, Instagram and LinkedIn are the three shown; there is no TikTok.
 3. **"Mental Health Alliance."** The meeting notes said Alliance; the resource list uses **Mental Health America** (`mhanational.org`), which is almost certainly what was meant. Worth a check.
 4. **Child welfare / DCS.** Described as "years of work in Indiana child welfare" rather than naming the agency or a title, since the brief only said "DCS background." She should set the exact wording.

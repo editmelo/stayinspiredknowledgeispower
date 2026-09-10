@@ -224,9 +224,10 @@ export const william = {
   name: "William Rivera",
   eyebrow: "In memory",
   heading: "Her father, and the reason there is a fund",
+  /* Miriam's own words, supplied 10 Sep 2026. Verbatim — do not edit, and
+     keep the green heart: she asked for it specifically. */
   copy: [
-    "Miriam is writing this part herself — her father's story, in her words.",
-    "This is a placeholder so the section can be built and reviewed. It is not finished copy.",
+    "My dad, William Rivera, was a loving father whose life and legacy continue to inspire our family. Although he passed away in 2016, the memories, lessons, and love he gave us remain in our hearts every day. His journey inspired me to create the William Rivera Memorial Scholarship Fund, helping students pursue their educational dreams. Through this scholarship, his legacy continues to live on by bringing hope, opportunity, and support to others. 💚",
   ],
   /* Stacked in the left column; the pair fills the height of the collage. */
   lead: [

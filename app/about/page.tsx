@@ -121,8 +121,6 @@ export default function AboutPage() {
       </section>
 
       {/* ------------------------------------------------- in memory ---- */}
-      {/* PLACEHOLDER COPY — william.copy in lib/content.ts is holding text.
-          Miriam is writing this section herself. Replace before launch. */}
       <section className="relative overflow-hidden border-t border-bone/10">
         <div className="shell band">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
@@ -191,8 +189,8 @@ export default function AboutPage() {
       {/* Faith / verse */}
       <section className="bg-leaf text-bone">
         <div className="shell band-tight">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            <Reveal className="lg:col-span-4">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+            <Reveal className="lg:col-span-3 lg:justify-self-end">
               <Image
                 src="/brand/seal.png"
                 alt="The Stay Inspired Knowledge Is Power seal"
@@ -201,7 +199,7 @@ export default function AboutPage() {
                 className="size-32 md:size-40"
               />
             </Reveal>
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-9">
               <p className="quote">&ldquo;{org.verse}&rdquo;</p>
               <p className="eyebrow mt-4 !text-bone/65">{org.verseRef}</p>
               <p className="mt-6 max-w-xl text-bone/80">

@@ -232,7 +232,7 @@ export const william = {
   /* Stacked in the left column; the pair fills the height of the collage. */
   lead: [
     { src: "/photos/william/william-at-work.jpg", alt: "William Rivera at work, seated in uniform", position: "center" },
-    { src: "/photos/william/miriam-and-children-memorial-tees.jpg", alt: "Miriam with her children, all wearing shirts in memory of William", position: "center" },
+    { src: "/photos/william/family-portrait.jpg", alt: "A Rivera family portrait", position: "center" },
   ],
   /* The collage on the right. */
   grid: [
@@ -240,7 +240,7 @@ export const william = {
     { src: "/photos/william/william-kitchen.jpg", alt: "William Rivera in a kitchen with family", position: "center" },
     { src: "/photos/william/william-at-home.jpg", alt: "William Rivera at home", position: "center" },
     { src: "/photos/william/william-young.jpg", alt: "William Rivera as a young man", position: "center" },
-    { src: "/photos/william/family-portrait.jpg", alt: "A Rivera family portrait", position: "center" },
+    { src: "/photos/william/miriam-and-children-memorial-tees.jpg", alt: "Miriam with her children, all wearing shirts in memory of William", position: "center" },
     { src: "/photos/william/graveside.jpg", alt: "The Rivera family gathered at William's graveside", position: "center" },
   ],
 };

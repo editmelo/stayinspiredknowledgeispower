@@ -21,9 +21,9 @@ import {
 
 /** One product from each of the four categories, so the range reads at a glance. */
 const featured = [
-  "music-is-my-therapy",
+  "mj-piano-keys-tee-white",
+  "mj-piano-keys-tee-black",
   "mental-health-apron",
-  "rock-out-tumbler",
   "mental-health-bracelet",
 ]
   .map((slug) => products.find((p) => p.slug === slug))

@@ -91,24 +91,6 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    slug: "music-is-my-therapy",
-    name: "Music Is My Therapy",
-    price: 30,
-    category: "Shirts",
-    image: "/products/music-is-my-therapy.jpg",
-    note: "The flagship. Four words most people have never said out loud.",
-    featured: true,
-  },
-  {
-    slug: "rock-out-tshirt",
-    name: "Rock Out for Mental Health T-shirt",
-    price: 30,
-    category: "Shirts",
-    image: "/products/rock-out-tshirt.jpg",
-    note: "Front and back. Mental health matters, printed where people read it.",
-    featured: true,
-  },
-  {
     slug: "mj-piano-keys-tee-white",
     name: "MJ Piano Keys Tee White",
     price: 25,
@@ -124,6 +106,24 @@ export const products: Product[] = [
     category: "Shirts",
     image: "/products/piano-keys-tee-black.jpg",
     note: "The same keyboard, inverted.",
+    featured: true,
+  },
+  {
+    slug: "music-is-my-therapy",
+    name: "Music Is My Therapy",
+    price: 30,
+    category: "Shirts",
+    image: "/products/music-is-my-therapy.jpg",
+    note: "The flagship. Four words most people have never said out loud.",
+    featured: true,
+  },
+  {
+    slug: "rock-out-tshirt",
+    name: "Rock Out for Mental Health T-shirt",
+    price: 30,
+    category: "Shirts",
+    image: "/products/rock-out-tshirt.jpg",
+    note: "Front and back. Mental health matters, printed where people read it.",
     featured: true,
   },
   {
@@ -223,7 +223,7 @@ export const categories = (
 export const william = {
   name: "William Rivera",
   eyebrow: "In memory",
-  heading: "Her father, and the reason there is a fund",
+  heading: "In his daughter's words",
   /* Miriam's own words, supplied 10 Sep 2026. Verbatim — do not edit, and
      keep the green heart: she asked for it specifically. */
   copy: [

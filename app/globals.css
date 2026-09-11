@@ -266,6 +266,32 @@
   background: var(--color-rose);
 }
 
+/* Size picker. Borrows .btn-ghost's currentColor border so it reads correctly
+   on the bone cards and on coal alike. */
+.select-field {
+  width: 100%;
+  appearance: none;
+  border: 1px solid color-mix(in oklab, currentColor 26%, transparent);
+  background: transparent;
+  color: inherit;
+  padding: 0.72rem 2.2rem 0.72rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: border-color 0.25s var(--ease-out-quint);
+}
+.select-field:hover {
+  border-color: color-mix(in oklab, currentColor 52%, transparent);
+}
+.select-field[data-missing="true"] {
+  border-color: var(--color-rose);
+}
+/* The native popup is OS-drawn, so force readable option text on both themes. */
+.select-field option {
+  color: #121013;
+  background: #efece5;
+}
+
 /* Text link with a rule beneath and an arrow that steps forward. */
 .tlink {
   display: inline-flex;

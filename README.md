@@ -83,7 +83,7 @@ points at the old Wix store — that link has been removed from the site.
 
 1. Sign in at **developer.squareup.com/apps** with the same login she uses for
    Square. Her seller account already works here; there is nothing new to buy.
-2. **+ Create app**, name it something like `Stay Inspired Website`.
+3. **+ Create app**, name it something like `Stay Inspired Website`.
 3. Open the app, then **Credentials**. Note the **Sandbox** / **Production**
    toggle at the top — they are different tokens, and the sandbox one charges
    nothing. Copy the **Access token**.
@@ -142,8 +142,15 @@ different location IDs. Mixing a sandbox token with a production location fails.
   **server-side**, returns the Square URL. A tampered request cannot change the
   price charged; this is verified against the live sandbox.
 - `components/CartProvider.tsx` — cart state, persisted to `localStorage` via
-  `useSyncExternalStore`. Stores slugs and quantities only, never prices, and
-  drops any slug no longer in the catalog.
+  `useSyncExternalStore`. Stores slugs, sizes and quantities only, never
+  prices, and drops any slug no longer in the catalog. A line is keyed by slug
+  **and** size, so one shirt in two sizes is two lines.
+- **Shirt sizes** (`sizeGroups` in `content.ts`) apply to the `Shirts` category
+  only, via `isSized()`. The stored value is fully qualified — `Adult S`, not
+  `S` — because it travels to Square as the line item's `variation_name` and
+  lands on Miriam's order ticket, where a bare `S` would not say adult or
+  youth. A shirt without a size is rejected **on the server**, not just in the
+  UI: an order she cannot fulfil must never reach Square.
 - `components/CartDrawer.tsx` — the panel: quantities, subtotal, checkout.
   Focus-trapped, Escape closes, background scroll locked.
 - `components/AddToCartButton.tsx`, `components/CartButton.tsx` — the card
@@ -165,20 +172,21 @@ different location IDs. Mixing a sandbox token with a production location fails.
 
 These are written as accurately as the brief allowed, but a few need her sign-off:
 
-1. **Checkout is now on-site via Square** (see "Connecting Square" above), verified end to end against Square's sandbox. Nothing links to the old Wix store any more; `org.legacyStore` and `org.legacyDonate` have been deleted. If the credentials are absent at build time the cart disappears and cards link to `/shop`.
-2. **Instagram handle — likely wrong.** The site links `@getfitwmiriam`, the only handle supplied. Her own printed bookmarks name two different accounts: **`knowledge_is_powerllc`** for the company and **`miriamdr.speaksllc`** for the speaking brand. Not changed without a say-so, but the current link is probably not where supporters should be sent. Facebook, Instagram and LinkedIn are the three shown; there is no TikTok.
-3. **"Mental Health Alliance."** The meeting notes said Alliance; the resource list uses **Mental Health America** (`mhanational.org`), which is almost certainly what was meant. Worth a check.
-4. **Child welfare / DCS.** Described as "years of work in Indiana child welfare" rather than naming the agency or a title, since the brief only said "DCS background." She should set the exact wording.
-5. **William's memorial section (`/about`) now carries Miriam's own words**, supplied 10 Sep 2026 and set verbatim in `william.copy` (`content.ts`), green heart included. Do not edit it. The lede above it reads "In his daughter's words", so the first person is introduced rather than clashing with it.
+1. **Do all nine shirts come in all eighteen sizes?** The same list — Adult S–3XL, Youth S–XL, Baby 0-3/3-6/6-12 months and 2T–6T — is offered on every shirt, because that is how it was supplied. If some designs are adult-only, or the baby sizes are print-on-demand only, the list needs splitting per product. **Also: baby and youth shirts are priced the same as adult.** No separate prices were given.
+2. **Checkout is now on-site via Square** (see "Connecting Square" above), verified end to end against Square's sandbox. Nothing links to the old Wix store any more; `org.legacyStore` and `org.legacyDonate` have been deleted. If the credentials are absent at build time the cart disappears and cards link to `/shop`.
+3. **Instagram handle — likely wrong.** The site links `@getfitwmiriam`, the only handle supplied. Her own printed bookmarks name two different accounts: **`knowledge_is_powerllc`** for the company and **`miriamdr.speaksllc`** for the speaking brand. Not changed without a say-so, but the current link is probably not where supporters should be sent. Facebook, Instagram and LinkedIn are the three shown; there is no TikTok.
+4. **"Mental Health Alliance."** The meeting notes said Alliance; the resource list uses **Mental Health America** (`mhanational.org`), which is almost certainly what was meant. Worth a check.
+5. **Child welfare / DCS.** Described as "years of work in Indiana child welfare" rather than naming the agency or a title, since the brief only said "DCS background." She should set the exact wording.
+6. **William's memorial section (`/about`) now carries Miriam's own words**, supplied 10 Sep 2026 and set verbatim in `william.copy` (`content.ts`), green heart included. Do not edit it. The lede above it reads "In his daughter's words", so the first person is introduced rather than clashing with it.
 
    Two of the eight photographs show **children's faces** (`family-portrait.jpg`, `grandchildren-memorial-tees.jpg`) and one is the **graveside** (`graveside.jpg`). All three are fine to keep, but they are the kind of thing a family should choose to publish deliberately rather than by default. Ask.
-6. **Speaking topics may be off-message.** The four talks under "What she can speak about" were written from the original brief and lean on addiction. Her bookmark describes the programme as *"empowering youth ages 12–18 … evidence-informed tools to practice positivity, strengthen resilience."* The topics were left alone rather than rewritten, but they should probably be replaced with her actual session list.
-7. **Zelle.** Her Zelle QR is held in `private-assets/`, which is gitignored and outside `public/` — deliberately not on the site and not in this repo, per instruction. See `private-assets/README.md`. Note that this repo is public, so anything committed under `public/` is published permanently.
-8. **Speaking availability.** The site says "Now booking first engagements for the 2026–27 school year," which reflects having no bookings yet without sounding new. Update as dates fill.
-9. **William.** William Rivera was Miriam's father; she lost him to mental health and substance use. She should read the passages on `/about` and `/scholarship` and approve the wording herself. The memorial section is now her own words (see 5). Separately, `/about` carries two sections headed "William Rivera" — "The name on the fund" and the "In memory" one — which reads as a duplicate on a single page.
-10. **Resources layout.** The ask was for "a dropdown with multiple resource links," because Wix only allowed one. This is built as four labelled groups of four links each — sixteen total, all visible, no clicking to discover them. If she specifically wants a collapsed dropdown, that is a small change.
-11. **Scholarship application.** Currently a pre-filled email. If she wants a real form with file upload, that is a follow-up.
-12. **Contact form** composes an email in the visitor's mail app rather than posting to a server, so nothing can silently fail to arrive. If she would rather receive submissions directly, that needs a form service or an API route.
+7. **Speaking topics may be off-message.** The four talks under "What she can speak about" were written from the original brief and lean on addiction. Her bookmark describes the programme as *"empowering youth ages 12–18 … evidence-informed tools to practice positivity, strengthen resilience."* The topics were left alone rather than rewritten, but they should probably be replaced with her actual session list.
+8. **Zelle.** Her Zelle QR is held in `private-assets/`, which is gitignored and outside `public/` — deliberately not on the site and not in this repo, per instruction. See `private-assets/README.md`. Note that this repo is public, so anything committed under `public/` is published permanently.
+9. **Speaking availability.** The site says "Now booking first engagements for the 2026–27 school year," which reflects having no bookings yet without sounding new. Update as dates fill.
+10. **William.** William Rivera was Miriam's father; she lost him to mental health and substance use. She should read the passages on `/about` and `/scholarship` and approve the wording herself. The memorial section is now her own words (see 6). Separately, `/about` carries two sections headed "William Rivera" — "The name on the fund" and the "In memory" one — which reads as a duplicate on a single page.
+11. **Resources layout.** The ask was for "a dropdown with multiple resource links," because Wix only allowed one. This is built as four labelled groups of four links each — sixteen total, all visible, no clicking to discover them. If she specifically wants a collapsed dropdown, that is a small change.
+12. **Scholarship application.** Currently a pre-filled email. If she wants a real form with file upload, that is a follow-up.
+13. **Contact form** composes an email in the visitor's mail app rather than posting to a server, so nothing can silently fail to arrive. If she would rather receive submissions directly, that needs a form service or an API route.
 
 ---
 

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { products } from "@/lib/content";
+import { allSizes, isSized, products } from "@/lib/content";
 import { SquareError, createCheckoutLink, getSquareConfig } from "@/lib/square";
 
 /**
@@ -25,7 +25,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Malformed request." }, { status: 400 });
   }
 
-  const items = (payload as { items?: { slug?: unknown; quantity?: unknown }[] })?.items;
+  const items = (payload as {
+    items?: { slug?: unknown; quantity?: unknown; size?: unknown }[];
+  })?.items;
   if (!Array.isArray(items) || items.length === 0) {
     return NextResponse.json({ error: "No items to check out." }, { status: 400 });
   }
@@ -40,7 +42,30 @@ export async function POST(request: Request) {
     if (!Number.isInteger(quantity) || quantity < 1 || quantity > 99) {
       return NextResponse.json({ error: "Quantity must be between 1 and 99." }, { status: 400 });
     }
-    lines.push({ name: product.name, price: product.price, quantity });
+
+    /* A shirt with no size is an order Miriam cannot fulfil, so it is rejected
+       here rather than reaching Square. Unsized goods must not carry one. */
+    const size = item.size;
+    if (isSized(product)) {
+      if (typeof size !== "string" || !allSizes.includes(size)) {
+        return NextResponse.json(
+          { error: `Choose a size for ${product.name}.` },
+          { status: 400 },
+        );
+      }
+    } else if (size !== undefined && size !== null && size !== "") {
+      return NextResponse.json(
+        { error: `${product.name} does not come in sizes.` },
+        { status: 400 },
+      );
+    }
+
+    lines.push({
+      name: product.name,
+      price: product.price,
+      quantity,
+      ...(isSized(product) ? { size: size as string } : {}),
+    });
   }
 
   const origin = new URL(request.url).origin;

@@ -77,7 +77,7 @@ export default function ProductCard({
       <div className="flex flex-1 flex-col p-5">
         <Meta product={product} />
         <div className="mt-5 flex-1" />
-        <AddToCartButton slug={product.slug} name={product.name} />
+        <AddToCartButton product={product} />
       </div>
     </div>
   );

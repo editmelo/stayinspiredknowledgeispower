@@ -18,6 +18,9 @@ export type CheckoutLine = {
   /** Price in whole dollars, as stored in lib/content.ts. */
   price: number;
   quantity: number;
+  /** Shirt size. Rides to Square as the line's variation so it lands on the
+      order and the receipt — without it an order cannot be fulfilled. */
+  size?: string;
 };
 
 export type SquareConfig = {
@@ -84,6 +87,7 @@ export async function createCheckoutLink(
           name: l.name,
           quantity: String(l.quantity),
           base_price_money: { amount: Math.round(l.price * 100), currency: "USD" },
+          ...(l.size ? { variation_name: l.size, note: l.size } : {}),
         })),
       },
       checkout_options: {

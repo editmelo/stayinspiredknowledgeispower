@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
 import Reveal from "./Reveal";
-import { categories, products, type Product } from "@/lib/content";
+import { categories, collection, products, type Product } from "@/lib/content";
 
 type Filter = Product["category"] | "All";
 
@@ -87,6 +87,10 @@ export default function ShopBrowser({ squareReady }: { squareReady: boolean }) {
       <section className="on-bone">
         <div className="shell band">
           <div id="collection" className="scroll-mt-28">
+            <p className="mb-7 text-lg font-bold tracking-tight sm:text-xl">
+              {collection.label}: &ldquo;{collection.name}&rdquo;
+            </p>
+
             <div className="flex items-end justify-between gap-6 border-b border-ink/15 pb-4">
               <h2 className="display d3">
                 {filter === "All" ? "All products" : filter}

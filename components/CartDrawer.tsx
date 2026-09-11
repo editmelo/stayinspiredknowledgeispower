@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useCart } from "./CartProvider";
+import { lineKey, useCart } from "./CartProvider";
 
 /**
  * The cart panel. Sends slugs and quantities to /api/checkout, which prices the
@@ -128,8 +128,8 @@ export default function CartDrawer() {
           </div>
         ) : (
           <ul className="flex-1 divide-y divide-bone/10 overflow-y-auto px-5">
-            {entries.map(({ product, quantity }) => (
-              <li key={product.slug} className="flex gap-4 py-5">
+            {entries.map(({ product, size, quantity }) => (
+              <li key={lineKey(product.slug, size)} className="flex gap-4 py-5">
                 <div className="shot size-20 shrink-0">
                   <Image
                     src={product.image}
@@ -149,37 +149,42 @@ export default function CartDrawer() {
                       ${product.price * quantity}
                     </p>
                   </div>
+                  {size && <p className="mt-1 text-xs font-semibold">{size}</p>}
                   <p className="muted mt-1 text-xs">${product.price} each</p>
 
                   <div className="mt-3 flex items-center gap-3">
                     <div className="flex items-center border border-bone/20">
                       <button
                         type="button"
-                        onClick={() => setQuantity(product.slug, quantity - 1)}
+                        onClick={() =>
+                          setQuantity(product.slug, size, quantity - 1)
+                        }
                         className="px-2.5 py-1 text-sm text-ash transition-colors hover:text-bone"
-                        aria-label={`Reduce ${product.name} quantity`}
+                        aria-label={`Reduce ${product.name}${size ? `, ${size}` : ""} quantity`}
                       >
                         −
                       </button>
                       <span
                         className="min-w-8 text-center text-sm tabular-nums"
                         aria-live="polite"
-                        aria-label={`${product.name} quantity`}
+                        aria-label={`${product.name}${size ? `, ${size}` : ""} quantity`}
                       >
                         {quantity}
                       </span>
                       <button
                         type="button"
-                        onClick={() => setQuantity(product.slug, quantity + 1)}
+                        onClick={() =>
+                          setQuantity(product.slug, size, quantity + 1)
+                        }
                         className="px-2.5 py-1 text-sm text-ash transition-colors hover:text-bone"
-                        aria-label={`Increase ${product.name} quantity`}
+                        aria-label={`Increase ${product.name}${size ? `, ${size}` : ""} quantity`}
                       >
                         +
                       </button>
                     </div>
                     <button
                       type="button"
-                      onClick={() => remove(product.slug)}
+                      onClick={() => remove(product.slug, size)}
                       className="text-xs text-ash underline underline-offset-4 transition-colors hover:text-rose"
                     >
                       Remove

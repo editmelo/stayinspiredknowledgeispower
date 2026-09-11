@@ -7,7 +7,8 @@ export const org = {
   name: "Stay Inspired Knowledge Is Power LLC",
   shortName: "Stay Inspired Knowledge Is Power",
   founder: "Miriam D. Rivera",
-  verse: "Happy is the man who finds wisdom, and the man who gains understanding.",
+  verse:
+    "Happy is the man who finds wisdom, and the man who gains understanding.",
   verseRef: "Proverbs 3:13",
   email: "love.inspiresfaith@gmail.com",
   region: "Indiana",
@@ -51,31 +52,36 @@ export const buckets = [
     n: "Swag",
     title: "The collection",
     href: "/shop",
-    blurb: "Shirts, aprons, tumblers and bracelets that start the conversation — and fund the scholarship.",
+    blurb:
+      "Shirts, aprons, tumblers and bracelets that start the conversation — and fund the scholarship.",
   },
   {
     n: "Speaking",
     title: "Miriam dr. Speaks",
     href: "/speaking",
-    blurb: "Lived experience and a child welfare background, brought to schools and youth programs.",
+    blurb:
+      "Lived experience and a child welfare background, brought to schools and youth programs.",
   },
   {
     n: "Education",
     title: "Learn",
     href: "/learn",
-    blurb: "How addiction happens, explained by a mother who lost her son to substance use.",
+    blurb:
+      "How addiction happens, explained by a mother who lost her son to substance use.",
   },
   {
     n: "Scholarship",
     title: "William Rivera Memorial Fund",
     href: "/scholarship",
-    blurb: "For students who grew up with a parent affected by mental illness or substance use.",
+    blurb:
+      "For students who grew up with a parent affected by mental illness or substance use.",
   },
   {
     n: "Resources",
     title: "Get help now",
     href: "/resources",
-    blurb: "Crisis lines, provider search by ZIP code, and Indiana-specific support.",
+    blurb:
+      "Crisis lines, provider search by ZIP code, and Indiana-specific support.",
   },
 ];
 
@@ -88,6 +94,61 @@ export type Product = {
   note: string;
   featured?: boolean;
 };
+
+/* This year's collection. Deliberately not stamped with a year number — a
+   hardcoded 2026 would quietly go stale every January. */
+export const collection = {
+  label: "This year's collection",
+  name: "Healing Through Music",
+};
+
+/* Shirt sizes. `value` is what travels to Square and onto Miriam's order
+   ticket, so it has to stand alone: "S" would not say whether it is an adult
+   or a youth shirt. `label` is only what the dropdown shows under its group. */
+export const sizeGroups = [
+  {
+    group: "Adult",
+    options: [
+      { value: "Adult S", label: "S" },
+      { value: "Adult M", label: "M" },
+      { value: "Adult L", label: "L" },
+      { value: "Adult XL", label: "XL" },
+      { value: "Adult 2XL", label: "2XL" },
+      { value: "Adult 3XL", label: "3XL" },
+    ],
+  },
+  {
+    group: "Youth",
+    options: [
+      { value: "Youth S", label: "S" },
+      { value: "Youth M", label: "M" },
+      { value: "Youth L", label: "L" },
+      { value: "Youth XL", label: "XL" },
+    ],
+  },
+  {
+    group: "Baby & toddler",
+    options: [
+      { value: "Baby 0-3 months", label: "0-3 months" },
+      { value: "Baby 3-6 months", label: "3-6 months" },
+      { value: "Baby 6-12 months", label: "6-12 months" },
+      { value: "2T", label: "2T" },
+      { value: "3T", label: "3T" },
+      { value: "4T", label: "4T" },
+      { value: "5T", label: "5T" },
+      { value: "6T", label: "6T" },
+    ],
+  },
+] as const;
+
+export const allSizes: string[] = sizeGroups.flatMap((g) =>
+  g.options.map((o) => o.value),
+);
+
+/** Only shirts are sized; aprons, drinkware and bracelets are one-size. */
+export function isSized(product: Product): boolean {
+  return product.category === "Shirts";
+}
 
 export const products: Product[] = [
   {
@@ -231,21 +292,51 @@ export const william = {
   ],
   /* Stacked in the left column; the pair fills the height of the collage. */
   lead: [
-    { src: "/photos/william/william-at-work.jpg", alt: "William Rivera at work, seated in uniform", position: "center" },
-    { src: "/photos/william/family-portrait.jpg", alt: "A Rivera family portrait", position: "center" },
+    {
+      src: "/photos/william/william-at-work.jpg",
+      alt: "William Rivera at work, seated in uniform",
+      position: "center",
+    },
+    {
+      src: "/photos/william/family-portrait.jpg",
+      alt: "A Rivera family portrait",
+      position: "center",
+    },
   ],
   /* The collage on the right. */
   grid: [
-    { src: "/photos/william/william-chef-clipping.jpg", alt: "William Rivera in chef's whites, in a newspaper clipping", position: "top" },
-    { src: "/photos/william/william-kitchen.jpg", alt: "William Rivera in a kitchen with family", position: "center" },
-    { src: "/photos/william/william-at-home.jpg", alt: "William Rivera at home", position: "center" },
-    { src: "/photos/william/william-young.jpg", alt: "William Rivera as a young man", position: "center" },
-    { src: "/photos/william/miriam-and-children-memorial-tees.jpg", alt: "Miriam with her children, all wearing shirts in memory of William", position: "center" },
-    { src: "/photos/william/graveside.jpg", alt: "The Rivera family gathered at William's graveside", position: "center" },
+    {
+      src: "/photos/william/william-chef-clipping.jpg",
+      alt: "William Rivera in chef's whites, in a newspaper clipping",
+      position: "top",
+    },
+    {
+      src: "/photos/william/william-kitchen.jpg",
+      alt: "William Rivera in a kitchen with family",
+      position: "center",
+    },
+    {
+      src: "/photos/william/william-at-home.jpg",
+      alt: "William Rivera at home",
+      position: "center",
+    },
+    {
+      src: "/photos/william/william-young.jpg",
+      alt: "William Rivera as a young man",
+      position: "center",
+    },
+    {
+      src: "/photos/william/miriam-and-children-memorial-tees.jpg",
+      alt: "Miriam with her children, all wearing shirts in memory of William",
+      position: "center",
+    },
+    {
+      src: "/photos/william/graveside.jpg",
+      alt: "The Rivera family gathered at William's graveside",
+      position: "center",
+    },
   ],
 };
-;
-
 export const speaking = {
   brand: "Miriam dr. Speaks",
   tagline: "Positivity in Practice. Mental Health in Focus.",
@@ -260,8 +351,7 @@ export const speaking = {
   /* Miriam takes booking requests through this form rather than by email. */
   bookingForm:
     "https://docs.google.com/forms/d/e/1FAIpQLScBgxFBDrOHV3Htczq8dN1kD2Jyx5bAI9e624mGa8TJml2aiw/viewform?usp=header",
-  lede:
-    "Miriam talks to students about mental illness and substance use the way almost no one does — as the family member, not the textbook.",
+  lede: "Miriam talks to students about mental illness and substance use the way almost no one does — as the family member, not the textbook.",
   status: "Now booking first engagements for the 2026–27 school year.",
   credibility: [
     {
@@ -307,8 +397,7 @@ export const speaking = {
 export const education = {
   videoId: "HDfSx_Q7_Yk",
   videoTitle: "How Addiction Happens",
-  lede:
-    "Start here. One video, made by a mother who lost her son to substance use, for families trying to understand what they are looking at.",
+  lede: "Start here. One video, made by a mother who lost her son to substance use, for families trying to understand what they are looking at.",
   points: [
     {
       label: "Addiction is not a character flaw",
@@ -329,8 +418,7 @@ export const scholarship = {
   name: "William Rivera Memorial Scholarship Fund",
   award: 600,
   recipientsToDate: 1,
-  lede:
-    "The fund exists so that a student whose parent lives with mental illness or substance use disorder does not lose their education to it too.",
+  lede: "The fund exists so that a student whose parent lives with mental illness or substance use disorder does not lose their education to it too.",
   eligibility: [
     "Currently enrolled or accepted at a high school, college, university or trade program",
     "Has a parent diagnosed with a mental illness or a substance use disorder",
@@ -355,7 +443,8 @@ export const resourceGroups: ResourceGroup[] = [
   {
     id: "crisis",
     title: "If this is a crisis",
-    blurb: "Free, confidential, 24 hours a day. You do not need a diagnosis to call.",
+    blurb:
+      "Free, confidential, 24 hours a day. You do not need a diagnosis to call.",
     items: [
       {
         name: "988 Suicide & Crisis Lifeline",
@@ -371,7 +460,8 @@ export const resourceGroups: ResourceGroup[] = [
       },
       {
         name: "SAMHSA National Helpline",
-        detail: "1-800-662-HELP (4357). Treatment referral and information, in English and Spanish.",
+        detail:
+          "1-800-662-HELP (4357). Treatment referral and information, in English and Spanish.",
         href: "https://www.samhsa.gov/find-help/national-helpline",
         tel: "18006624357",
       },
@@ -385,26 +475,31 @@ export const resourceGroups: ResourceGroup[] = [
   {
     id: "find-care",
     title: "Find treatment and providers",
-    blurb: "Search by ZIP code for mental health and substance use care near you.",
+    blurb:
+      "Search by ZIP code for mental health and substance use care near you.",
     items: [
       {
         name: "FindTreatment.gov",
-        detail: "SAMHSA's official locator for substance use and mental health treatment facilities.",
+        detail:
+          "SAMHSA's official locator for substance use and mental health treatment facilities.",
         href: "https://findtreatment.gov/",
       },
       {
         name: "FindSupport.gov",
-        detail: "A guided walkthrough for people who are not sure what kind of help they need yet.",
+        detail:
+          "A guided walkthrough for people who are not sure what kind of help they need yet.",
         href: "https://www.findsupport.gov/",
       },
       {
         name: "NIMH Help for Mental Illnesses",
-        detail: "How to find a provider, what to ask, and what to expect from treatment.",
+        detail:
+          "How to find a provider, what to ask, and what to expect from treatment.",
         href: "https://www.nimh.nih.gov/health/find-help",
       },
       {
         name: "Mental Health America screening tools",
-        detail: "Free, anonymous screenings for depression, anxiety, and more — a place to start before an appointment.",
+        detail:
+          "Free, anonymous screenings for depression, anxiety, and more — a place to start before an appointment.",
         href: "https://screening.mhanational.org/screening-tools/",
       },
     ],
@@ -416,23 +511,27 @@ export const resourceGroups: ResourceGroup[] = [
     items: [
       {
         name: "Indiana 211",
-        detail: "Dial 211 for local help with treatment, food, housing, utilities and childcare.",
+        detail:
+          "Dial 211 for local help with treatment, food, housing, utilities and childcare.",
         href: "https://www.in.gov/211/",
         tel: "211",
       },
       {
         name: "Be Well Indiana",
-        detail: "Indiana's mental wellness hub, including crisis resources and local services.",
+        detail:
+          "Indiana's mental wellness hub, including crisis resources and local services.",
         href: "https://bewellindiana.com/",
       },
       {
         name: "Indiana Division of Mental Health and Addiction",
-        detail: "State-funded treatment programs, community mental health centers and recovery services.",
+        detail:
+          "State-funded treatment programs, community mental health centers and recovery services.",
         href: "https://www.in.gov/fssa/dmha/",
       },
       {
         name: "NextLevel Recovery Indiana",
-        detail: "Indiana's substance use response, including naloxone access and treatment locators.",
+        detail:
+          "Indiana's substance use response, including naloxone access and treatment locators.",
         href: "https://www.in.gov/recovery/",
       },
     ],
@@ -440,27 +539,32 @@ export const resourceGroups: ResourceGroup[] = [
   {
     id: "families",
     title: "For families and young people",
-    blurb: "Support built specifically for the people around someone who is struggling.",
+    blurb:
+      "Support built specifically for the people around someone who is struggling.",
     items: [
       {
         name: "NAMI HelpLine",
-        detail: "1-800-950-NAMI (6264), or text 62640. Peer support and navigation for families.",
+        detail:
+          "1-800-950-NAMI (6264), or text 62640. Peer support and navigation for families.",
         href: "https://www.nami.org/help",
         tel: "18009506264",
       },
       {
         name: "NACoA — National Association for Children of Addiction",
-        detail: "Resources written for kids and teens with a parent affected by addiction.",
+        detail:
+          "Resources written for kids and teens with a parent affected by addiction.",
         href: "https://nacoa.org/",
       },
       {
         name: "Alateen and Al-Anon",
-        detail: "Peer meetings for young people and family members affected by someone else's drinking.",
+        detail:
+          "Peer meetings for young people and family members affected by someone else's drinking.",
         href: "https://al-anon.org/newcomers/teen-corner-alateen/",
       },
       {
         name: "SAMHSA — Talking with your child",
-        detail: "Age-by-age guidance for conversations about alcohol and other drugs.",
+        detail:
+          "Age-by-age guidance for conversations about alcohol and other drugs.",
         href: "https://www.samhsa.gov/talk-they-hear-you",
       },
     ],

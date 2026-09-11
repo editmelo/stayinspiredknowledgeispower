@@ -7,12 +7,15 @@ import Waveform from "./Waveform";
 export function SectionHead({
   eyebrow,
   title,
+  subtitle,
   lede,
   link,
   align = "left",
 }: {
   eyebrow: string;
   title: ReactNode;
+  /** A bold line directly under the title, outside the heading itself. */
+  subtitle?: ReactNode;
   lede?: ReactNode;
   link?: { label: string; href: string };
   align?: "left" | "center";
@@ -27,6 +30,9 @@ export function SectionHead({
         <div className={align === "center" ? "max-w-3xl" : "max-w-2xl"}>
           <p className="eyebrow">{eyebrow}</p>
           <h2 className="display d2 mt-4">{title}</h2>
+          {subtitle && (
+            <p className="mt-4 text-lg font-bold tracking-tight sm:text-xl">{subtitle}</p>
+          )}
           {lede && <p className="lede mt-5">{lede}</p>}
         </div>
         {link && (

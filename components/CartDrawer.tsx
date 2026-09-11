@@ -72,6 +72,23 @@ export default function CartDrawer() {
 
   async function checkout() {
     setState("loading");
+
+    /* Opened synchronously, while the click is still the active user gesture.
+       A window.open() issued after the fetch resolves is treated as an unasked
+       popup and blocked — Safari especially. The tab is parked on about:blank
+       and pointed at Square once the link comes back. */
+    const tab = window.open("", "_blank");
+    if (tab) {
+      try {
+        /* Sever the back-reference before navigating away from about:blank, so
+           the checkout page cannot reach back into this one. */
+        tab.opener = null;
+        tab.document.title = "Opening checkout…";
+      } catch {
+        /* Cosmetic only. */
+      }
+    }
+
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -81,8 +98,18 @@ export default function CartDrawer() {
       const data = (await res.json()) as { url?: string; error?: string };
       if (!res.ok || !data.url)
         throw new Error(data.error ?? "Checkout unavailable");
-      window.location.href = data.url;
+
+      if (tab && !tab.closed) {
+        tab.location.href = data.url;
+        /* This page stays put, so the button has to come back on its own. */
+        setState("idle");
+      } else {
+        /* Popup blocked, or the shopper closed the tab. Better to go to Square
+           in this tab than to strand someone who is trying to pay. */
+        window.location.href = data.url;
+      }
     } catch {
+      tab?.close();
       setState("error");
     }
   }

@@ -97,9 +97,14 @@ export type Product = {
 
 /* This year's collection. Deliberately not stamped with a year number — a
    hardcoded 2026 would quietly go stale every January. */
+const collectionName = "Healing Through Music";
+
 export const collection = {
   label: "This year's collection",
-  name: "Healing Through Music",
+  name: collectionName,
+  /* The home page line, worded by Lauren — keep the capitals, the comma and
+     the emoji exactly as written. */
+  homeLine: `Our Collection This Year Is, “${collectionName}.” 🎶💚`,
 };
 
 /* Shirt sizes. `value` is what travels to Square and onto Miriam's order

@@ -117,7 +117,7 @@ export default function Home() {
           <SectionHead
             eyebrow="Swag & merch"
             title="Wearable art with something to say"
-            subtitle={collection.name}
+            subtitle={collection.homeLine}
             lede="Roses, wings and music notes on shirts, aprons, tumblers and bracelets. It is not generic merch: every piece is a sentence someone else can read across a room."
             link={{ label: "All products", href: "/shop" }}
           />

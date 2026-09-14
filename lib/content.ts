@@ -419,6 +419,15 @@ export const education = {
   ],
 };
 
+/* Donations by Zelle, published at Miriam's request on 14 Sep 2026. The QR
+   decodes to exactly this name and email, so keep all three in step — if the
+   receiving account ever changes, replace the image as well as the text. */
+export const zelle = {
+  email: "love.inspiresfaith@gmail.com",
+  displayName: "STAY KNOWLEDGEISPOWERLLC",
+  qr: "/donate/zelle-qr.png",
+};
+
 export const scholarship = {
   name: "William Rivera Memorial Scholarship Fund",
   award: 600,

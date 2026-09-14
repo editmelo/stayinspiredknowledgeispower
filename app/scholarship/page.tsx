@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Waveform from "@/components/Waveform";
 import { Fact, PageHero, SectionHead } from "@/components/ui";
-import { org, products, scholarship } from "@/lib/content";
+import { org, products, scholarship, zelle } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "William Rivera Memorial Scholarship Fund",
@@ -189,6 +190,34 @@ export default function ScholarshipPage() {
                 >
                   Email about donating
                 </a>
+              </div>
+
+              {/* Zelle. The email matters as much as the code: someone reading
+                  this on their phone cannot scan their own screen. */}
+              <div className="mt-8 border-t border-bone/12 pt-7">
+                <p className="eyebrow">Give by Zelle</p>
+                <div className="mt-4 flex flex-col gap-5">
+                  {/* Shown at its native 424px and never resampled. The code
+                      fills only half the image, so its modules are small:
+                      measured, it stops scanning on a 1x monitor below ~384px
+                      wide. On phones it shrinks to fit, which is fine — their
+                      screens are dense, and nobody scans their own phone. */}
+                  <Image
+                    src={zelle.qr}
+                    alt={`Zelle QR code for ${zelle.displayName}`}
+                    width={424}
+                    height={505}
+                    unoptimized
+                    className="w-full max-w-[424px] bg-white"
+                  />
+                  <div>
+                    <p className="muted">Scan it in your banking app, or send to</p>
+                    <p className="mt-1 font-semibold break-all text-bone">{zelle.email}</p>
+                    <p className="muted-2 mt-3 text-sm">
+                      It will show as {zelle.displayName}.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

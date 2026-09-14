@@ -158,6 +158,14 @@ export default function ScholarshipPage() {
             <Waveform variant="silence" count={120} height={56} color="var(--color-lime)" />
           </Reveal>
 
+          <div className="mt-10 border-l-2 border-lime pl-6">
+            <Fact
+              value={`$${scholarship.award}`}
+              label="Sponsors one full scholarship"
+              detail="One student, one year, one expense they no longer have to solve alone."
+            />
+          </div>
+
           <div className="mt-12 grid gap-px bg-bone/12 md:grid-cols-2">
             <div className="bg-ink p-8">
               <p className="eyebrow">Option one</p>
@@ -220,14 +228,6 @@ export default function ScholarshipPage() {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="mt-10 border-l-2 border-lime pl-6">
-            <Fact
-              value={`$${scholarship.award}`}
-              label="Sponsors one full scholarship"
-              detail="One student, one year, one expense they no longer have to solve alone."
-            />
           </div>
         </div>
       </section>
